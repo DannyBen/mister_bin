@@ -1,42 +1,49 @@
 module Supersub
   class Commands
-    attr_reader :basename
+    attr_reader :basename, :basedir
 
-    def initialize(basename)
+    def initialize(basename, basedir='.')
       @basename = basename
+      @basedir = basedir
     end
 
     def all
       @all ||= all!
     end
 
+    def names
+      all.keys
+    end
+
     def find(query)
-      keys = all.keys.select { |k| k =~ /^#{query}/ }
+      query_regex = /^#{query.join '.* '}/
+      keys = names.select { |k| k =~ /^#{query_regex}/ }
+      keys = names.select { |k| k =~ /^#{query.first}/ } if keys.empty?
       keys.map { |k| [k, all[k]] }.to_h
     end
 
     def find_one(query)
       result = find query
-      result.size == 1 ? result : false
+      result.size == 1 ? result.values.first : false
     end
 
     private
 
     def all!
       result = {}
-      files.each do |file|
+      files.map do |file|
         if file =~ /#{basename}-(.+)-(.+)\.rb/
-          result[$1] ||= {}
-          result[$1][$2] = file
+          command = "#{$1} #{$2}"
         elsif file =~ /#{basename}-(.+)\.rb/
-          result[$1] = file
+          command = $1
         end
+        result[command] = Command.new command, file
       end
       result
     end
 
     def files
-      @files ||= Dir["#{basename}-*.rb"]
+      @files ||= Dir["#{basedir}/#{basename}-*.rb"]
     end
   end
 end

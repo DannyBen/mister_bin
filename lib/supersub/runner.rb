@@ -21,7 +21,8 @@ module Supersub
     private
 
     def execute(argv)
-      command = commands.find_one argv[0]
+      argv = expand_argv argv
+      command = commands.find_one argv[0..1]
 
       if command
         execute_command command, argv
@@ -32,7 +33,7 @@ module Supersub
     end
 
     def execute_command(command, argv)
-      Script.new(command).run argv
+      command.run argv
     end
 
     def show_subs
@@ -40,7 +41,7 @@ module Supersub
         puts "No subcommands found"
       else
         puts "Usage:"
-        commands.all.keys.each { |sub| puts "  #{name} #{sub}" }
+        commands.names.each { |command| puts "  #{name} #{command}" }
       end
 
       return 1
@@ -48,6 +49,16 @@ module Supersub
 
     def commands
       @commands ||= Commands.new name
+    end
+
+    def expand_argv(argv)
+      command = commands.find_one argv[0..1]
+      if command
+        argv.shift command.argv.size
+        command.argv + argv
+      else
+        argv
+      end
     end
   end
 end

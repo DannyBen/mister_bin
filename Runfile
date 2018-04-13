@@ -33,13 +33,11 @@ action :changelog do
   run "git commit -am 'update changelog' && git push"
 end
 
-action :debug do
-  Dir.chdir 'dev' do
-    commands = Commands.new 'app'
-    pp commands.all
-    pp commands.find 'w'
-    pp commands.find_one 'wo'
-    pp commands.find_one 'w'
-    pp commands.find 'asd'
-  end
+usage "debug [-- PARAMS...]"
+action :debug do |args|
+  commands = Commands.new 'app', 'dev'
+  pp commands.find "w"
+
+  # state_machine = StateMachine.new commands, args['PARAMS']
+  # p state_machine.state
 end
