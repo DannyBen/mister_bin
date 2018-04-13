@@ -1,0 +1,45 @@
+require "runfile-tasks"
+require "byebug"
+require_relative 'lib/supersub'
+
+include Supersub
+
+title   "Supersub Developer Toolbelt"
+summary "Runfile tasks for building the Supersub gem"
+version Supersub::VERSION
+
+RunfileTasks::RubyGems.all 'supersub'
+RunfileTasks::Testing.rspec
+RunfileTasks::Docs.rdoc
+
+help   "Run YARD server"
+action :yard do
+  run "yard server -p3000 -B0.0.0.0 -r"
+end
+
+help   "Run interactive console"
+action :console, :c do
+  run "bundle exec bin/console"
+end
+
+help   "Generate TOC to toc.txt"
+action :toc do
+  run! 'gh-md-toc README.md > toc.txt'
+end
+
+help   "Generate changelog"
+action :changelog do
+  run 'github_changelog_generator --cache-file tmp/changlog-cache'  
+  run "git commit -am 'update changelog' && git push"
+end
+
+action :debug do
+  Dir.chdir 'dev' do
+    commands = Commands.new 'app'
+    pp commands.all
+    pp commands.find 'w'
+    pp commands.find_one 'wo'
+    pp commands.find_one 'w'
+    pp commands.find 'asd'
+  end
+end
