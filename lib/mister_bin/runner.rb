@@ -1,4 +1,4 @@
-module Supersub
+module MisterBin
   class Runner
     attr_reader :name
 

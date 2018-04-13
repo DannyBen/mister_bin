@@ -1,4 +1,4 @@
-module Supersub
+module MisterBin
   class Command
     attr_reader :command, :file, :type
 

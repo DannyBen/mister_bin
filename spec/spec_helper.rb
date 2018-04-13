@@ -5,7 +5,7 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :default, :development
 
-include supersub
+include MisterBin
 require_relative 'spec_mixin'
 
 RSpec.configure do |c|

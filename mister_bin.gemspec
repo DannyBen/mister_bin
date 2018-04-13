@@ -1,18 +1,18 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'date'
-require 'supersub/version'
+require 'mister_bin/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'Supersub'
-  s.version     = Supersub::VERSION
+  s.name        = 'mister_bin'
+  s.version     = MisterBin::VERSION
   s.date        = Date.today.to_s
   s.summary     = "Description soon"
   s.description = "Description soon"
   s.authors     = ["Danny Ben Shitrit"]
   s.email       = 'db@dannyben.com'
   s.files       = Dir['README.md', 'lib/**/*.*']
-  s.homepage    = 'https://github.com/dannyben/supersub'
+  s.homepage    = 'https://github.com/dannyben/mister_bin'
   s.license     = 'MIT'
   s.required_ruby_version = ">= 2.4.0"
 

@@ -1,6 +1,6 @@
 require 'singleton'
 
-module Supersub
+module MisterBin
   class DocoptMaker
     include Singleton
 

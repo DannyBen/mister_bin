@@ -2,6 +2,6 @@
 
 require "irb"
 require "irb/completion" 
-require "supersub"
+require "miser_bin"
 
 IRB.start

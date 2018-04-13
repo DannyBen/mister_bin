@@ -1,14 +1,14 @@
 require "runfile-tasks"
 require "byebug"
-require_relative 'lib/supersub'
+require_relative 'lib/mister_bin'
 
-include Supersub
+include MisterBin
 
-title   "Supersub Developer Toolbelt"
-summary "Runfile tasks for building the Supersub gem"
-version Supersub::VERSION
+title   "Mister Bin Developer Toolbelt"
+summary "Runfile tasks for building the Mister Bin gem"
+version MisterBin::VERSION
 
-RunfileTasks::RubyGems.all 'supersub'
+RunfileTasks::RubyGems.all 'mister_bin'
 RunfileTasks::Testing.rspec
 RunfileTasks::Docs.rdoc
 

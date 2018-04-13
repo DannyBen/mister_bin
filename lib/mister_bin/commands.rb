@@ -1,4 +1,4 @@
-module Supersub
+module MisterBin
   class Commands
     attr_reader :basename, :basedir
 

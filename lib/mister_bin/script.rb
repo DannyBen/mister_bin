@@ -1,7 +1,7 @@
 require 'colsole'
 require 'docopt'
 
-module Supersub
+module MisterBin
   class Script
     include Colsole
 
