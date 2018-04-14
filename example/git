@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+require 'mister_bin'
+exit MisterBin::Runner.run __FILE__, ARGV
