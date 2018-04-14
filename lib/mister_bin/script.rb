@@ -46,6 +46,10 @@ module MisterBin
       DocoptMaker.instance.options << [flags, text]
     end
 
+    def param(param, text)
+      DocoptMaker.instance.params << [param, text]
+    end
+
     def example(text)
       DocoptMaker.instance.examples << text
     end

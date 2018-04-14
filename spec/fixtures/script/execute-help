@@ -3,6 +3,7 @@ Show list of files and more
 Usage:
   app ls
   app ls --all
+  app ls DIR
 
 Options:
   --all
@@ -13,6 +14,10 @@ Options:
 
   --version
     Show version number
+
+Parameters:
+  DIR
+    Directory to list
 
 Examples:
   app ls

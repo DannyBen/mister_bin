@@ -3,8 +3,11 @@ version "0.1.1"
 
 usage "app ls"
 usage "app ls --all"
+usage "app ls DIR"
 
 option "--all", "Also show hidden files"
+
+param "DIR", "Directory to list"
 
 example "app ls"
 example "app ls --all"
