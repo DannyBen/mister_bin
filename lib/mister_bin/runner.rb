@@ -28,8 +28,8 @@ module MisterBin
       if command
         execute_command command, argv
       else
-        puts "Unknown command: #{argv[0]}"
-        return 1
+        puts "Unknown command: #{argv[0]}\n\n"
+        show_subs
       end
     end
 
@@ -41,7 +41,7 @@ module MisterBin
       if commands.all.empty?
         puts "No subcommands found"
       else
-        puts "Usage:"
+        puts "Commands:"
         commands.names.each { |command| puts "  #{name} #{command}" }
       end
 
