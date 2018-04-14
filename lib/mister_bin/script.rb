@@ -1,7 +1,12 @@
 require 'docopt'
+require 'colsole'
 
 module MisterBin
   class Script
+    # We are in cluding colsole to allow the evaluated script to use its
+    # functions
+    include Colsole
+
     attr_reader :file, :action_block
 
     def initialize(file)

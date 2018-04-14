@@ -31,7 +31,7 @@ module MisterBin
     private
 
     def help_string
-      word_wrap help
+      help ? word_wrap(help) : nil
     end
 
     def usage_string
