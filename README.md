@@ -170,6 +170,7 @@ example "app ls --all"
 action do |args|
   puts args['--all'] ? "success --all" : "success"
 end
+```
 
 
 [1]: http://docopt.org/
