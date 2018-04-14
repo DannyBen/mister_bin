@@ -1,3 +1,8 @@
 #!/usr/bin/env ruby
 require 'mister_bin'
-exit MisterBin::Runner.run __FILE__, ARGV
+
+exitcode =  MisterBin::Runner.run __FILE__, ARGV,
+  header: "This is a sample header.",
+  footer: "This is a sample footer.\nUse --help for each command to get more information"
+
+exit exitcode

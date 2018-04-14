@@ -112,7 +112,7 @@ require 'mister_bin'
 exit MisterBin::Runner.run __FILE__, ARGV
 ```
 
-This code will start the execution chain based on the arguments provided 
+It will start the execution chain based on the arguments provided 
 when running it.
 
 The `Runner.run` method requires two parameters:
@@ -120,6 +120,21 @@ The `Runner.run` method requires two parameters:
 1. The path to the base executable file (usually, `__FILE__` is what you 
    need).
 2. An array of arguments (usually `ARGV` is what you need).
+
+In addition, you may provide a `header` and a `footer` that will be 
+displayed when executing without arguments:
+
+```ruby
+# git
+#!/usr/bin/env ruby
+require 'mister_bin'
+
+exitcode =  MisterBin::Runner.run __FILE__, ARGV,
+  header: "This is a sample header.",
+  footer: "This is a sample footer."
+
+exit exitcode
+```
 
 
 

@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Runner do
   let(:basefile) { 'spec/workspace/app' }
-  subject { described_class.new basefile }
+  let(:opts) {{ header: 'Header', footer: 'Footer' }}
+  
+  subject { described_class.new basefile, opts }
 
   describe '::run' do
     it 'calls #run on a new instance' do
