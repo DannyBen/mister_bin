@@ -14,8 +14,8 @@ module MisterBin
       script.execute argv
     end
 
-    def argv
-      command.split ' '
-    end
+    # def argv
+    #   command.split ' '
+    # end
   end
 end

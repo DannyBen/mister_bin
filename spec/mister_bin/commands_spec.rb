@@ -16,36 +16,27 @@ describe Commands do
     end
   end
 
-  describe '#find' do
-    it 'returns commands that start with the search array' do
-      expect(subject.find(['w']).size).to eq 2
-      expect(subject.find(['wo', 'c']).size).to eq 1
-    end
-
-    it 'returns the correct result' do
-      result = subject.find(['wo', 'c'])
-      result = result['workspace create']
-      expect(result.command).to eq 'workspace create'
-      expect(result.file).to eq "spec/workspace/app-workspace-create.rb"
-    end
-  end
-
-  describe '#find_one' do
-    context 'when there is one match' do
-      it 'returns it' do
-        expect(subject.find_one 'l').to be_a Command
+  describe '#find', :focus do
+    context "when searching for a secondary command" do
+      it "returns a matching command" do
+        command = subject.find('workspace', 'create')
+        expect(command.command).to eq "workspace create"
+        expect(command.file).to eq "spec/workspace/app-workspace-create.rb"
       end
     end
 
-    context 'when there is more than one match' do
-      it 'returns false' do
-        expect(subject.find_one 'w').to eq false
+    context "when searching for a primary command" do
+      it "returns a matching command" do
+        command = subject.find('ls')
+        expect(command.command).to eq "ls"
+        expect(command.file).to eq "spec/workspace/app-ls.rb"
       end
     end
 
-    context 'when there is less than one match' do
-      it 'returns false' do
-        expect(subject.find_one 'no-such-command').to eq false
+    context "when searching for an invalid command" do
+      it "returns nil" do
+        command = subject.find('nocommand')
+        expect(command).to be_nil        
       end
     end
   end

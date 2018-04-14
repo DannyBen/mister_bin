@@ -35,9 +35,4 @@ end
 
 usage "debug [-- PARAMS...]"
 action :debug do |args|
-  commands = Commands.new 'app', 'dev'
-  pp commands.find "w"
-
-  # state_machine = StateMachine.new commands, args['PARAMS']
-  # p state_machine.state
 end

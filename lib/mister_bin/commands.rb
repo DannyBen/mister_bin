@@ -17,17 +17,12 @@ module MisterBin
       all.keys
     end
 
-    def find(query)
-      query = [query] unless query.is_a? Array
-      query_regex = /^#{query.join '.* '}/
-      keys = names.select { |k| k =~ /^#{query_regex}/ }
-      keys = names.select { |k| k =~ /^#{query.first}/ } if keys.empty?
-      keys.map { |k| [k, all[k]] }.to_h
-    end
-
-    def find_one(query)
-      result = find query
-      result.size == 1 ? result.values.first : false
+    def find(command, subcommand=nil)
+      if subcommand and names.include? "#{command} #{subcommand}"
+        all["#{command} #{subcommand}"]
+      else
+        all["#{command}"]
+      end
     end
 
     private

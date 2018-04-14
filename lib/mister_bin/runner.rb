@@ -23,8 +23,7 @@ module MisterBin
     private
 
     def execute(argv)
-      argv = expand_argv argv
-      command = commands.find_one argv[0..1]
+      command = commands.find argv[0], argv[1]
 
       if command
         execute_command command, argv
@@ -51,16 +50,6 @@ module MisterBin
 
     def commands
       @commands ||= Commands.new name, basedir
-    end
-
-    def expand_argv(argv)
-      command = commands.find_one argv[0..1]
-      if command
-        argv.shift command.argv.size
-        command.argv + argv
-      else
-        argv
-      end
     end
   end
 end
