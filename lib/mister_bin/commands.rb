@@ -14,7 +14,7 @@ module MisterBin
     end
 
     def names
-      all.keys
+      all.keys.sort
     end
 
     def find(command, subcommand=nil)

@@ -1,3 +1,4 @@
 Usage:
   app ls
   app ls --all
+  app ls DIR
