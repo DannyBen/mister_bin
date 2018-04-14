@@ -1,1 +1,6 @@
 Unknown command: unknown
+
+Commands:
+  app ls
+  app why
+  app workspace create
