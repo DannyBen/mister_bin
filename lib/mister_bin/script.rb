@@ -12,12 +12,13 @@ module MisterBin
     end
 
     def build_docopt
+      DocoptMaker.instance.reset
       instance_eval script
       docopt
     end
 
-    def execute(argv)
-      args = Docopt.docopt docopt, version: '0.0.0', argv: argv
+    def execute(argv=[])
+      args = Docopt.docopt docopt, version: DocoptMaker.instance.version, argv: argv
       exitcode = action_block.call args if action_block
       exitcode.is_a?(Numeric) ? exitcode : 0
     rescue Docopt::Exit => e

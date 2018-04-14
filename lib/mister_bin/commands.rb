@@ -1,4 +1,6 @@
 module MisterBin
+
+  # This class handles listing and finding command files
   class Commands
     attr_reader :basename, :basedir
 
@@ -16,6 +18,7 @@ module MisterBin
     end
 
     def find(query)
+      query = [query] unless query.is_a? Array
       query_regex = /^#{query.join '.* '}/
       keys = names.select { |k| k =~ /^#{query_regex}/ }
       keys = names.select { |k| k =~ /^#{query.first}/ } if keys.empty?

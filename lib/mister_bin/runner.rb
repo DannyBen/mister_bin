@@ -1,13 +1,15 @@
 module MisterBin
   class Runner
-    attr_reader :name
+    attr_reader :basefile, :basedir, :name
 
-    def self.run(name, argv=[])
-      new(name).run argv
+    def self.run(basefile, argv=[])
+      new(basefile).run argv
     end
 
-    def initialize(name)
-      @name = name
+    def initialize(basefile)
+      @basefile = basefile
+      @basedir = File.dirname basefile
+      @name = File.basename basefile
     end
 
     def run(argv=[])
@@ -48,7 +50,7 @@ module MisterBin
     end
 
     def commands
-      @commands ||= Commands.new name
+      @commands ||= Commands.new name, basedir
     end
 
     def expand_argv(argv)

@@ -1,6 +1,9 @@
 require 'singleton'
 
 module MisterBin
+
+  # This singleton class is responsible for generating a text string ready to be used
+  # by Docopt. 
   class DocoptMaker
     include Singleton
 
@@ -8,6 +11,10 @@ module MisterBin
     attr_accessor :help, :version
 
     def initialize
+      reset
+    end
+
+    def reset
       @usages = []
       @options = []
       @examples = []
@@ -35,7 +42,7 @@ module MisterBin
       end
 
       result << "  -h --help"
-      result << "    Show this help"
+      result << "    Show this help\n"
       result << "  --version"
       result << "    Show version number"
       result.join "\n"

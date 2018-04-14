@@ -1,0 +1,17 @@
+Help text here
+
+Usage:
+  mister --bin
+
+Options:
+  --bin
+    Option explained here
+
+  -h --help
+    Show this help
+
+  --version
+    Show version number
+
+Examples:
+  mister --bin

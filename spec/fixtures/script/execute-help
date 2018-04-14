@@ -1,0 +1,19 @@
+Show list of files and more
+
+Usage:
+  app ls
+  app ls --all
+
+Options:
+  --all
+    Also show hidden files
+
+  -h --help
+    Show this help
+
+  --version
+    Show version number
+
+Examples:
+  app ls
+  app ls --all

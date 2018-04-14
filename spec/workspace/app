@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'mister_bin'
+
+exit MisterBin::Runner.run 'app', ARGV
