@@ -1,6 +1,10 @@
 Unknown command: unknown
 
+Header
+
 Commands:
   app ls
   app why
   app workspace create
+
+Footer

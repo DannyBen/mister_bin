@@ -1,13 +1,15 @@
 module MisterBin
   class Runner
-    attr_reader :basefile, :basedir, :name
+    attr_reader :basefile, :basedir, :name, :header, :footer
 
-    def self.run(basefile, argv=[])
-      new(basefile).run argv
+    def self.run(basefile, argv=[], header: nil, footer: nil)
+      new(basefile, header: header, footer: footer).run argv
     end
 
-    def initialize(basefile)
+    def initialize(basefile, header: nil, footer: nil)
       @basefile = basefile
+      @header = header
+      @footer = footer
       @basedir = File.dirname basefile
       @name = File.basename basefile
     end
@@ -41,8 +43,10 @@ module MisterBin
       if commands.all.empty?
         puts "No subcommands found"
       else
+        puts "#{header}\n\n" if header
         puts "Commands:"
         commands.names.each { |command| puts "  #{name} #{command}" }
+        puts "\n#{footer}\n" if footer
       end
 
       return 1
