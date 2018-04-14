@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.name        = 'mister_bin'
   s.version     = MisterBin::VERSION
   s.date        = Date.today.to_s
-  s.summary     = "Description soon"
-  s.description = "Description soon"
+  s.summary     = "Modular command line framefowk"
+  s.description = "Build pluggable and modular command line tools with subcommands"
   s.authors     = ["Danny Ben Shitrit"]
   s.email       = 'db@dannyben.com'
   s.files       = Dir['README.md', 'lib/**/*.*']

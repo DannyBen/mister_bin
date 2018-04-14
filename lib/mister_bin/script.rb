@@ -1,10 +1,7 @@
-require 'colsole'
 require 'docopt'
 
 module MisterBin
   class Script
-    include Colsole
-
     attr_reader :file, :action_block
 
     def initialize(file)
