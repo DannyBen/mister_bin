@@ -22,8 +22,13 @@ Design Goals
 --------------------------------------------------
 
 - Provide an easy and minimalistic DSL for building command line utilities.
-- Provide a mechanism for separating each subcommand to its separate file.
+- Drastically reduce the need for boilerplate code and unnecessary wrappers 
+  involved in building command line utilities.
+- Provide a mechanism for separating each command and subcommand to its 
+  own file.
 - Support the ability to extend a given command from different sources.
+- Allow gem developers to easily add command line interface to their gems.
+- Allow for easy and straight forward testing of the generated CLI.
 
 
 
@@ -90,8 +95,8 @@ You will need to create these files:
 3. `git-repo-create.rb`
 4. `git-repo-delete.rb`
 
-Alternatively, if you prefer to handle all `repo` subcommands in a single, 
-file, simple implement these instead:
+Alternatively, if you prefer to handle all `repo` subcommands in a single 
+file, simply implement these instead:
 
 1. `git`
 2. `git-status.rb`
