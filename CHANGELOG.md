@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.1.2](https://github.com/DannyBen/mister_bin/tree/v0.1.2) (2018-04-15)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.1.1...v0.1.2)
+
+**Fixed bugs:**
+
+- Currently this is not pluggable [\#6](https://github.com/DannyBen/mister_bin/issues/6)
+
+**Merged pull requests:**
+
+- Improve path search to look in PATH [\#7](https://github.com/DannyBen/mister_bin/pull/7) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.1.1](https://github.com/DannyBen/mister_bin/tree/v0.1.1) (2018-04-15)
 [Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.1.0...v0.1.1)
 
