@@ -30,9 +30,9 @@ module MisterBin
     def all!
       result = {}
       files.map do |file|
-        if file =~ /#{basename}-(.+)-(.+)\.rb/
+        if file =~ /#{basename}-([a-z]+)-([a-z]+)\.rb/
           command = "#{$1} #{$2}"
-        elsif file =~ /#{basename}-(.+)\.rb/
+        elsif file =~ /#{basename}-([a-z]+)\.rb/
           command = $1
         end
         result[command] = Command.new command, file
