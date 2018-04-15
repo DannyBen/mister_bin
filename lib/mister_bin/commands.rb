@@ -41,7 +41,11 @@ module MisterBin
     end
 
     def files
-      @files ||= Dir["#{basedir}/#{basename}-*.rb"]
+      @files ||= path_helper.search("#{basename}-*.rb")
+    end
+
+    def path_helper
+      @path_helper ||= PathHelper.new(additional_dir: basedir)
     end
   end
 end
