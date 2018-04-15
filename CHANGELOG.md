@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/DannyBen/mister_bin/tree/HEAD)
-
-[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.0.2...HEAD)
+## [v0.1.0](https://github.com/DannyBen/mister_bin/tree/v0.1.0) (2018-04-15)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.0.2...v0.1.0)
 
 **Implemented enhancements:**
 
