@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Runner do
   let(:basefile) { 'spec/workspace/app' }
-  let(:opts) {{ header: 'Header', footer: 'Footer' }}
+  let(:opts) {{ header: '!txtgrn!Header', footer: 'The !txtred!End' }}
   
   subject { described_class.new basefile, opts }
 

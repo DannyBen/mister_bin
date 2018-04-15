@@ -1,5 +1,9 @@
+require 'colsole'
+
 module MisterBin
   class Runner
+    include Colsole
+
     attr_reader :basefile, :basedir, :name, :header, :footer
 
     def self.run(basefile, argv=[], header: nil, footer: nil)
@@ -43,10 +47,10 @@ module MisterBin
       if commands.all.empty?
         puts "No subcommands found"
       else
-        puts "#{header}\n\n" if header
+        say "#{header}\n" if header
         puts "Commands:"
         commands.names.each { |command| puts "  #{name} #{command}" }
-        puts "\n#{footer}\n" if footer
+        say "\n#{footer}" if footer
       end
 
       return 1

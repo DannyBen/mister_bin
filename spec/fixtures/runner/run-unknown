@@ -1,10 +1,11 @@
 Unknown command: unknown
 
-Header
+[0;32mHeader
 
-Commands:
+[0mCommands:
   app ls
   app why
   app workspace create
 
-Footer
+The [0;31mEnd
+[0m
