@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.1.1](https://github.com/DannyBen/mister_bin/tree/v0.1.1) (2018-04-15)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.1.0...v0.1.1)
+
+**Merged pull requests:**
+
+- Fix bin search for use in gems [\#5](https://github.com/DannyBen/mister_bin/pull/5) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.1.0](https://github.com/DannyBen/mister_bin/tree/v0.1.0) (2018-04-15)
 [Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.0.2...v0.1.0)
 
