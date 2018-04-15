@@ -2,6 +2,8 @@
 
 require "irb"
 require "irb/completion" 
-require "miser_bin"
+require "mister_bin"
+
+include MisterBin
 
 IRB.start

@@ -35,4 +35,6 @@ end
 
 usage "debug [-- PARAMS...]"
 action :debug do |args|
+  a = PathHelper.new
+  pp a.search 'viper*.rb'
 end
