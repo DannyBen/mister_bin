@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.2.0](https://github.com/DannyBen/mister_bin/tree/v0.2.0) (2018-04-19)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.1.2...v0.2.0)
+
+**Merged pull requests:**
+
+- Refactor runner with basedir and isolation options [\#9](https://github.com/DannyBen/mister_bin/pull/9) ([DannyBen](https://github.com/DannyBen))
+- Add CodeClimate code coverage [\#8](https://github.com/DannyBen/mister_bin/pull/8) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.1.2](https://github.com/DannyBen/mister_bin/tree/v0.1.2) (2018-04-15)
 [Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.1.1...v0.1.2)
 
