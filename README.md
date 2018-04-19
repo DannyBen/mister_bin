@@ -22,10 +22,6 @@ Contents
 * [Usage](#usage)
 * [Creating the Main Executable](#creating-the-main-executable)
     * [Runner Options](#runner-options)
-        * [header](#header)
-        * [footer](#footer)
-        * [basedir](#basedir)
-        * [isolate](#isolate)
 * [Creating Commands](#creating-commands)
     * [Command DSL](#command-dsl)
 
