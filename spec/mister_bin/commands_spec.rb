@@ -8,6 +8,22 @@ describe Commands do
       expect(subject.all).to be_a Hash
       expect(subject.all['ls']).to be_a Command
     end
+
+    context "when isolate=false" do
+      it "does not override PATH" do
+        expect_any_instance_of(PathHelper).not_to receive(:'paths=')
+        expect(subject.all).to be_a Hash
+      end
+    end
+
+    context "when isolate=true" do
+      subject { described_class.new 'app', 'spec/workspace', isolate: true }
+
+      it "overrides PATH" do
+        expect_any_instance_of(PathHelper).to receive(:'paths=')
+        expect(subject.all).to be_a Hash
+      end
+    end
   end
 
   describe '#names' do
@@ -16,7 +32,7 @@ describe Commands do
     end
   end
 
-  describe '#find', :focus do
+  describe '#find' do
     context "when searching for a secondary command" do
       it "returns a matching command" do
         command = subject.find('workspace', 'create')

@@ -1,8 +1,25 @@
 #!/usr/bin/env ruby
 require 'mister_bin'
 
-exitcode =  MisterBin::Runner.run __FILE__, ARGV,
+# All options are... optional.
+options = {
+  # Text to display before/after the list of commands
   header: "This is a sample header.",
-  footer: "This is a sample footer.\nUse --help for each command to get more information"
+  footer: "This is a sample footer.\nUse --help for each command to get more information",
 
+  # Additional dir (in addition to PATH) to search for commands
+  basedir: __dir__,
+
+  # If true, will only search in `basedir` and not in PATH.
+  isolate: false
+}
+
+# Create the runner object, the first parameter being the name of the main
+# executable.
+runner = MisterBin::Runner.new 'git', options
+
+# Run and provide the arguments from the command line to the runner
+exitcode =  runner.run ARGV
+
+# Exit politely, with a proper exit code
 exit exitcode

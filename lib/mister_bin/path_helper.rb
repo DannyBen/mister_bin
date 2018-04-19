@@ -2,6 +2,7 @@ module MisterBin
 
   class PathHelper
     attr_reader :pathspec, :additional_dir
+    attr_writer :paths
 
     def initialize(additional_dir: nil, pathspec: nil)
       @additional_dir = additional_dir
