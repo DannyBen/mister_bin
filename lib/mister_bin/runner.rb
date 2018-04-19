@@ -4,18 +4,14 @@ module MisterBin
   class Runner
     include Colsole
 
-    attr_reader :basefile, :basedir, :name, :header, :footer
+    attr_reader :name, :basedir, :header, :footer, :isolate
 
-    def self.run(basefile, argv=[], header: nil, footer: nil)
-      new(basefile, header: header, footer: footer).run argv
-    end
-
-    def initialize(basefile, header: nil, footer: nil)
-      @basefile = basefile
-      @header = header
-      @footer = footer
-      @basedir = File.dirname basefile
-      @name = File.basename basefile
+    def initialize(name, opts={})
+      @name = name
+      @header = opts[:header]
+      @footer = opts[:footer]
+      @isolate = opts[:isolate]
+      @basedir = opts[:basedir]
     end
 
     def run(argv=[])
@@ -57,7 +53,7 @@ module MisterBin
     end
 
     def commands
-      @commands ||= Commands.new name, basedir
+      @commands ||= Commands.new name, basedir, isolate: isolate
     end
   end
 end

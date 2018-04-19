@@ -12,6 +12,24 @@ Build modular command line utilities.
 
 ---
 
+Contents
+--------------------------------------------------
+
+* [Contents](#contents)
+* [Installation](#installation)
+* [Design Goals](#design-goals)
+* [Example](#example)
+* [Usage](#usage)
+* [Creating the Main Executable](#creating-the-main-executable)
+    * [Runner Options](#runner-options)
+        * [header](#header)
+        * [footer](#footer)
+        * [basedir](#basedir)
+        * [isolate](#isolate)
+* [Creating Commands](#creating-commands)
+    * [Command DSL](#command-dsl)
+
+
 Installation
 --------------------------------------------------
 
@@ -58,10 +76,12 @@ The `git` executable:
 #!/usr/bin/env ruby
 require 'mister_bin'
 
-exit MisterBin::Runner.run __FILE__, ARGV
+runner = MisterBin::Runner.new 'git', basedir: __dir__
+exitcode =  runner.run ARGV
 ```
 
 The file to handle the `git push` command:
+
 ```ruby
 # git-push.rb
 version "0.1.0"
@@ -108,47 +128,69 @@ file, simply implement these instead:
 Creating the Main Executable
 --------------------------------------------------
 
-The main executable is usually simple, and contains this code:
+The main executable is usually simple and only serves to initialize Mister 
+Bin with options.
+
+This is the minimal code:
 
 ```ruby
 # git
 #!/usr/bin/env ruby
 require 'mister_bin'
 
-exit MisterBin::Runner.run __FILE__, ARGV
-```
-
-It will start the execution chain based on the arguments provided 
-when running it.
-
-The `Runner.run` method requires two parameters:
-
-1. The path to the base executable file (usually, `__FILE__` is what you 
-   need).
-2. An array of arguments (usually `ARGV` is what you need).
-
-In addition, you may provide a `header` and a `footer` that will be 
-displayed when executing without arguments:
-
-```ruby
-# git
-#!/usr/bin/env ruby
-require 'mister_bin'
-
-exitcode =  MisterBin::Runner.run __FILE__, ARGV,
-  header: "This is a sample header.",
-  footer: "This is a sample footer."
-
+runner = MisterBin::Runner.new 'appname'
+exitcode = runner.run ARGV
 exit exitcode
 ```
 
+### Runner Options
+
+The `Runner` method requires only the name of the main executable:
+
+```ruby
+runner = MisterBin::Runner.new 'appname'
+```
+
+In addition, you can provide an options hash:
+
+```ruby
+options = {
+  header: 'My command line app'
+  footer: 'Use --help for additional info',
+  basedir: __dir__, 
+  isolate: true
+}
+
+runner = MisterBin::Runner.new 'appname', options
+```
+
+#### `header`
+
+Text to display before the list of commands.
+
+#### `footer`
+
+Text to display after the list of commands.
+
+#### `basedir`
+
+The directory that holds the command files. 
+
+By default, the runner will look for its command files in all the `PATH` 
+directories. You may add another directory to this search path by specifying
+it with `basedir`
+
+#### `isolate`
+
+If you wish to prevent runner from searching in the `PATH` directories, 
+specify `isolate: true`
 
 
-Creating Subcommands
+Creating Commands
 --------------------------------------------------
 
 When the main executable is executed, it will look for files matching a 
-specific pattern in the same directory.
+specific pattern in the same directory and in the `PATH`.
 
 Assuming the main executable is called `myapp`, it will look for 
 `myapp-*.rb` files (e.g. `myapp-status.rb`)
@@ -158,8 +200,7 @@ their actions.
 
 
 
-The DSL
---------------------------------------------------
+### Command DSL
 
 The DSL is designed to create a [docopt][1] document. Most commands are 
 optional.

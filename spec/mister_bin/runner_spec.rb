@@ -1,17 +1,14 @@
 require 'spec_helper'
 
 describe Runner do
-  let(:basefile) { 'spec/workspace/app' }
-  let(:opts) {{ header: '!txtgrn!Header', footer: 'The !txtred!End' }}
+  let(:name) { 'app' }
+  let(:opts) {{ 
+    basedir: 'spec/workspace', 
+    header: '!txtgrn!Header', 
+    footer: 'The !txtred!End' 
+  }}
   
-  subject { described_class.new basefile, opts }
-
-  describe '::run' do
-    it 'calls #run on a new instance' do
-      expect_any_instance_of(Runner).to receive(:run).with([1,2,3])
-      described_class.run basefile, [1,2,3]
-    end
-  end
+  subject { described_class.new name, opts }
 
   describe '#run' do
     context "with empty argv" do
@@ -33,11 +30,40 @@ describe Runner do
     end
 
     context "when no subcommands are fonud" do
-      let(:basefile) { 'spec/workspace/nosuchcommand' }
+      let(:name) { 'nosuchcommand' }
 
       it "errors gracefully" do
         expect{ subject.run }.to output_fixture('runner/run-no-subs')
       end
+    end
+
+    context "path isolation" do
+      before :all do
+        # Make the 'spec/workspace' a part of the system search PATH
+        @path = ENV['PATH']
+        ENV['PATH'] = "spec/workspace" + File::PATH_SEPARATOR + ENV['PATH']
+      end
+
+      after :all do
+        ENV['PATH'] = @path
+      end
+
+      context "when isolate=false" do
+        let(:opts) {{ basedir: 'spec/workspace/somedir' }}
+
+        it "shows commands in path and in basedir" do
+          expect{ subject.run }.to output_fixture('runner/isolate-false')
+        end
+      end
+
+      context "when isolate=true" do
+        let(:opts) {{ basedir: 'spec/workspace/somedir', isolate: true }}
+
+        it "shows commands in basedir only" do
+          expect{ subject.run }.to output_fixture('runner/isolate-true')
+        end
+      end
+      
     end
   end
 

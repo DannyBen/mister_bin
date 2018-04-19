@@ -45,4 +45,12 @@ describe PathHelper do
       end
     end
   end
+
+  describe '#paths=' do
+    it "allows overriding the array of paths" do
+      expect(subject.paths.size).to be > 1
+      subject.paths = ['some/dir']
+      expect(subject.paths.size).to eq 1
+    end
+  end
 end

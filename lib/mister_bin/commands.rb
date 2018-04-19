@@ -2,11 +2,12 @@ module MisterBin
 
   # This class handles listing and finding command files
   class Commands
-    attr_reader :basename, :basedir
+    attr_reader :basename, :basedir, :isolate
 
-    def initialize(basename, basedir='.')
+    def initialize(basename, basedir='.', isolate: false)
       @basename = basename
       @basedir = basedir
+      @isolate = isolate
     end
 
     def all
@@ -45,7 +46,13 @@ module MisterBin
     end
 
     def path_helper
-      @path_helper ||= PathHelper.new(additional_dir: basedir)
+      @path_helper ||= path_helper!
+    end
+
+    def path_helper!
+      helper = PathHelper.new(additional_dir: basedir)
+      helper.paths = [basedir] if isolate
+      helper
     end
   end
 end
