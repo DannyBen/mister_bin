@@ -15,7 +15,7 @@ module MisterBin
 
     def execute(argv=[])
       build_docopt
-      args = Docopt.docopt docopt, version: DocoptMaker.instance.version, argv: argv
+      args = Docopt.docopt docopt, version: maker.version, argv: argv
       exitcode = action_block.call args if action_block
       exitcode.is_a?(Numeric) ? exitcode : 0
     rescue Docopt::Exit => e
@@ -24,33 +24,33 @@ module MisterBin
     end
 
     def docopt
-      DocoptMaker.instance.docopt
+      maker.docopt
     end
 
     # DSL
 
     def help(text)
-      DocoptMaker.instance.help = text
+      maker.help = text
     end
 
     def usage(text)
-      DocoptMaker.instance.usages << text
+      maker.usages << text
     end
 
     def option(flags, text)
-      DocoptMaker.instance.options << [flags, text]
+      maker.options << [flags, text]
     end
 
     def param(param, text)
-      DocoptMaker.instance.params << [param, text]
+      maker.params << [param, text]
     end
 
     def example(text)
-      DocoptMaker.instance.examples << text
+      maker.examples << text
     end
 
     def version(text)
-      DocoptMaker.instance.version = text
+      maker.version = text
     end
 
     def action(&block)
@@ -60,9 +60,13 @@ module MisterBin
     private
 
     def build_docopt
-      DocoptMaker.instance.reset
+      @maker = nil
       instance_eval script
       docopt
+    end
+
+    def maker
+      @maker ||= DocoptMaker.new
     end
 
     def script

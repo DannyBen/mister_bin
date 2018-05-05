@@ -1,4 +1,3 @@
-require 'singleton'
 require 'colsole'
 
 module MisterBin
@@ -6,17 +5,12 @@ module MisterBin
   # This singleton class is responsible for generating a text string ready to be used
   # by Docopt. 
   class DocoptMaker
-    include Singleton
     include Colsole
 
     attr_reader :usages, :options, :examples, :params
     attr_accessor :help, :version
 
     def initialize
-      reset
-    end
-
-    def reset
       @usages = []
       @options = []
       @params = []
