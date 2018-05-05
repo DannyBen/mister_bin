@@ -3,9 +3,9 @@ Unknown command: unknown
 [0;32mHeader
 
 [0mCommands:
-  app ls
-  app why
-  app workspace create
+  [1;32mls                [0mShow list of files and more
+  [1;32mwhy               [0m
+  [1;32mworkspace create  [0mCreate workspace
 
 The [0;31mEnd
 [0m

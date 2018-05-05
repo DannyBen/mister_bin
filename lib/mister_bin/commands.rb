@@ -1,8 +1,13 @@
+require 'forwardable'
+
 module MisterBin
 
   # This class handles listing and finding command files
   class Commands
+    extend Forwardable
+    
     attr_reader :basename, :basedir, :isolate
+    def_delegators :all, :[], :<<, :each, :size, :keys, :values, :empty?
 
     def initialize(basename, basedir='.', isolate: false)
       @basename = basename
@@ -14,12 +19,8 @@ module MisterBin
       @all ||= all!
     end
 
-    def names
-      all.keys.sort
-    end
-
     def find(command, subcommand=nil)
-      if subcommand and names.include? "#{command} #{subcommand}"
+      if subcommand and keys.include? "#{command} #{subcommand}"
         all["#{command} #{subcommand}"]
       else
         all["#{command}"]
@@ -38,7 +39,7 @@ module MisterBin
         end
         result[command] = Command.new command, file
       end
-      result
+      result.sort.to_h
     end
 
     def files

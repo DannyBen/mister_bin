@@ -9,13 +9,17 @@ module MisterBin
     end
 
     def run(argv=[])
-      script = Script.new file
-      script.build_docopt
       script.execute argv
     end
 
-    # def argv
-    #   command.split ' '
-    # end
+    def metadata
+      script.evaluate
+    end
+
+    private
+
+    def script
+      @script ||= Script.new file
+    end
   end
 end

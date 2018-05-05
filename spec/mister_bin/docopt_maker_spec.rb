@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe DocoptMaker do
-  subject { described_class.clone.instance }
-
   describe '#docopt' do
     before do
       subject.usages << "mister --bin"

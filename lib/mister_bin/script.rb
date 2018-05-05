@@ -13,14 +13,9 @@ module MisterBin
       @file = file
     end
 
-    def build_docopt
-      DocoptMaker.instance.reset
-      instance_eval script
-      docopt
-    end
-
     def execute(argv=[])
-      args = Docopt.docopt docopt, version: DocoptMaker.instance.version, argv: argv
+      build_docopt
+      args = Docopt.docopt docopt, version: maker.version, argv: argv
       exitcode = action_block.call args if action_block
       exitcode.is_a?(Numeric) ? exitcode : 0
     rescue Docopt::Exit => e
@@ -28,34 +23,43 @@ module MisterBin
       1
     end
 
+    def evaluate
+      instance_eval script
+      metadata
+    end
+
     def docopt
-      DocoptMaker.instance.docopt
+      maker.docopt
+    end
+
+    def metadata
+      { summary: help, version: version }
     end
 
     # DSL
 
-    def help(text)
-      DocoptMaker.instance.help = text
+    def help(text=nil)
+      text ? maker.help = text : maker.help
+    end
+
+    def version(text=nil)
+      text ? maker.version = text : maker.version
     end
 
     def usage(text)
-      DocoptMaker.instance.usages << text
+      maker.usages << text
     end
 
     def option(flags, text)
-      DocoptMaker.instance.options << [flags, text]
+      maker.options << [flags, text]
     end
 
     def param(param, text)
-      DocoptMaker.instance.params << [param, text]
+      maker.params << [param, text]
     end
 
     def example(text)
-      DocoptMaker.instance.examples << text
-    end
-
-    def version(text)
-      DocoptMaker.instance.version = text
+      maker.examples << text
     end
 
     def action(&block)
@@ -63,6 +67,16 @@ module MisterBin
     end
 
     private
+
+    def build_docopt
+      @maker = nil
+      instance_eval script
+      docopt
+    end
+
+    def maker
+      @maker ||= DocoptMaker.new
+    end
 
     def script
       @script ||= File.read file
