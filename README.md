@@ -205,8 +205,11 @@ The below example outlines all available DSL commands.
 
 
 ```ruby
+# Optional summary string
+summary "A short sentence or paragraph describing the command"
+
 # Optional help string
-help "A short sentence or paragraph describing the command"
+help "A longer explanation can go here"
 
 # Version string for the command
 version "0.1.1"

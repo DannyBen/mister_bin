@@ -1,4 +1,5 @@
-help "Show list of files and more"
+summary "Show list of files and more"
+help    "A longer help can optionallly go here."
 version "0.1.1"
 
 usage "app ls"

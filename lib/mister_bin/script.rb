@@ -15,17 +15,10 @@ module MisterBin
 
     def execute(argv=[])
       build_docopt
-      args = Docopt.docopt docopt, version: maker.version, argv: argv
-      exitcode = action_block.call args if action_block
-      exitcode.is_a?(Numeric) ? exitcode : 0
+      execute! argv
     rescue Docopt::Exit => e
       puts e.message
       1
-    end
-
-    def evaluate
-      instance_eval script
-      metadata
     end
 
     def docopt
@@ -33,17 +26,21 @@ module MisterBin
     end
 
     def metadata
-      { summary: help, version: version }
+      @metadata ||= metadata!
     end
 
     # DSL
 
-    def help(text=nil)
-      text ? maker.help = text : maker.help
+    def summary(text)
+      maker.summary = text
     end
 
-    def version(text=nil)
-      text ? maker.version = text : maker.version
+    def help(text)
+      maker.help = text
+    end
+
+    def version(text)
+      maker.version = text
     end
 
     def usage(text)
@@ -67,6 +64,21 @@ module MisterBin
     end
 
     private
+
+    def metadata!
+      instance_eval script
+
+      { 
+        summary: (maker.summary || maker.help), 
+        version: maker.version 
+      }
+    end
+
+    def execute!(argv)
+      args = Docopt.docopt docopt, version: maker.version, argv: argv
+      exitcode = action_block.call args if action_block
+      exitcode.is_a?(Numeric) ? exitcode : 0
+    end
 
     def build_docopt
       @maker = nil
