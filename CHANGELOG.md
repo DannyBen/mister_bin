@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.2.1](https://github.com/DannyBen/mister_bin/tree/v0.2.1) (2018-05-05)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.2.0...v0.2.1)
+
+**Implemented enhancements:**
+
+- Add description line to commands [\#10](https://github.com/DannyBen/mister_bin/issues/10)
+
+**Merged pull requests:**
+
+- Show summary when running without arguments [\#11](https://github.com/DannyBen/mister_bin/pull/11) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.2.0](https://github.com/DannyBen/mister_bin/tree/v0.2.0) (2018-04-19)
 [Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.1.2...v0.2.0)
 
