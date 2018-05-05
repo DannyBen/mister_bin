@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.2.2](https://github.com/DannyBen/mister_bin/tree/v0.2.2) (2018-05-05)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.2.1...v0.2.2)
+
+**Merged pull requests:**
+
+- Remove the need to call \#evaluate to get \#metadata [\#12](https://github.com/DannyBen/mister_bin/pull/12) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.2.1](https://github.com/DannyBen/mister_bin/tree/v0.2.1) (2018-05-05)
 [Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.2.0...v0.2.1)
 
