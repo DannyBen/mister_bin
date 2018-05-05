@@ -1,3 +1,5 @@
+require 'forwardable'
+
 module MisterBin
 
   # This class handles listing and finding command files
