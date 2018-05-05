@@ -11,6 +11,9 @@ rvm:
 notifications:
   email: false
 
+branches:
+  only: [master]
+
 before_install:
 - gem install bundler
 

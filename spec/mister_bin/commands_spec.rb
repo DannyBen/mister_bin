@@ -26,12 +26,6 @@ describe Commands do
     end
   end
 
-  # describe '#names' do
-  #   it 'returns an array of command names' do
-  #     expect(subject.names).to eq ["ls", "why", "workspace create"]
-  #   end
-  # end
-
   describe '#find' do
     context "when searching for a secondary command" do
       it "returns a matching command" do
