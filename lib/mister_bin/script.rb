@@ -16,6 +16,9 @@ module MisterBin
     def execute(argv=[])
       build_docopt
       execute! argv
+    rescue Docopt::Exit => e
+      puts e.message
+      1
     end
 
     def docopt
@@ -75,9 +78,6 @@ module MisterBin
       args = Docopt.docopt docopt, version: maker.version, argv: argv
       exitcode = action_block.call args if action_block
       exitcode.is_a?(Numeric) ? exitcode : 0
-    rescue Docopt::Exit => e
-      puts e.message
-      1
     end
 
     def build_docopt
