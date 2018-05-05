@@ -3,15 +3,7 @@ require 'spec_helper'
 describe Script do
   subject { described_class.new 'spec/workspace/app-ls.rb' }
 
-  describe '#build_docopt' do
-    it "returns a docopt string" do
-      expect(subject.build_docopt).to match_fixture('script/build_docopt')
-    end
-  end
-
   describe '#execute' do
-    before { subject.build_docopt }
-
     context "without args" do
       it "shows usage" do
         expect{ subject.execute }.to output_fixture('script/execute')

@@ -33,8 +33,4 @@ action :changelog do
   run "git commit -am 'update changelog' && git push"
 end
 
-usage "debug [-- PARAMS...]"
-action :debug do |args|
-  a = PathHelper.new
-  pp a.search 'viper*.rb'
-end
+require_relative 'debug' if File.exist? 'debug.rb'

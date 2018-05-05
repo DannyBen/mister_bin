@@ -13,13 +13,8 @@ module MisterBin
       @file = file
     end
 
-    def build_docopt
-      DocoptMaker.instance.reset
-      instance_eval script
-      docopt
-    end
-
     def execute(argv=[])
+      build_docopt
       args = Docopt.docopt docopt, version: DocoptMaker.instance.version, argv: argv
       exitcode = action_block.call args if action_block
       exitcode.is_a?(Numeric) ? exitcode : 0
@@ -63,6 +58,12 @@ module MisterBin
     end
 
     private
+
+    def build_docopt
+      DocoptMaker.instance.reset
+      instance_eval script
+      docopt
+    end
 
     def script
       @script ||= File.read file

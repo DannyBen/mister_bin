@@ -5,7 +5,6 @@ describe Command do
 
   describe '#run' do
     it 'executes the script' do
-      allow_any_instance_of(Script).to receive(:build_docopt)
       expect_any_instance_of(Script).to receive(:execute)
       subject.run
     end

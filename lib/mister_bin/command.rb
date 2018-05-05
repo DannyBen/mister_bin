@@ -10,12 +10,7 @@ module MisterBin
 
     def run(argv=[])
       script = Script.new file
-      script.build_docopt
       script.execute argv
     end
-
-    # def argv
-    #   command.split ' '
-    # end
   end
 end
