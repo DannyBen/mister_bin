@@ -13,7 +13,7 @@ module MisterBin
     end
 
     def metadata
-      script.evaluate
+      script.metadata
     end
 
     private

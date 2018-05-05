@@ -23,27 +23,22 @@ module MisterBin
       1
     end
 
-    def evaluate
-      instance_eval script
-      metadata
-    end
-
     def docopt
       maker.docopt
     end
 
     def metadata
-      { summary: help, version: version }
+      @metadata ||= metadata!
     end
 
     # DSL
 
     def help(text=nil)
-      text ? maker.help = text : maker.help
+      maker.help = text
     end
 
     def version(text=nil)
-      text ? maker.version = text : maker.version
+      maker.version = text
     end
 
     def usage(text)
@@ -67,6 +62,11 @@ module MisterBin
     end
 
     private
+
+    def metadata!
+      instance_eval script
+      { summary: maker.help, version: maker.version }
+    end
 
     def build_docopt
       @maker = nil
