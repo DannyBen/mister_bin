@@ -8,23 +8,28 @@ module MisterBin
     include Colsole
 
     attr_reader :usages, :options, :examples, :params
-    attr_accessor :help, :version
+    attr_accessor :summary, :help, :version
 
     def initialize
-      @usages = []
-      @options = []
-      @params = []
+      @version  = '0.0.0'
+      @help     = nil
+      @summary  = nil
+      @usages   = []
+      @options  = []
+      @params   = []
       @examples = []
-      @version = '0.0.0'
-      @help = nil
     end
 
     def docopt
-      [help_string, usage_string, options_string, 
+      [summary_string, help_string, usage_string, options_string, 
         params_string, examples_string].compact.join "\n"
     end
 
     private
+
+    def summary_string
+      summary ? word_wrap(summary) + "\n" : nil
+    end
 
     def help_string
       help ? word_wrap(help) + "\n" : nil

@@ -1,5 +1,7 @@
 Show list of files and more
 
+A longer help can optionallly go here.
+
 Usage:
   app ls
   app ls --all

@@ -8,6 +8,7 @@ describe DocoptMaker do
       subject.version = '1.2.3'
       subject.examples << 'mister --bin'
       subject.help = 'Help text here'
+      subject.summary = 'Summary text here'
     end
 
     it 'returns a string' do

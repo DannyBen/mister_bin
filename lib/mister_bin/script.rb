@@ -33,11 +33,15 @@ module MisterBin
 
     # DSL
 
-    def help(text=nil)
+    def summary(text)
+      maker.summary = text
+    end
+
+    def help(text)
       maker.help = text
     end
 
-    def version(text=nil)
+    def version(text)
       maker.version = text
     end
 
@@ -65,7 +69,11 @@ module MisterBin
 
     def metadata!
       instance_eval script
-      { summary: maker.help, version: maker.version }
+
+      { 
+        summary: (maker.summary || maker.help), 
+        version: maker.version 
+      }
     end
 
     def build_docopt
