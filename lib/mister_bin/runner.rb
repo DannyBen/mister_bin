@@ -51,12 +51,15 @@ module MisterBin
 
     def show_subs!
       longest_key = commands.keys.max_by(&:size).size
+      max_summary_size = terminal_width - longest_key - 6
 
       say "#{header}\n" if header
       
       say "Commands:"
       commands.each do |key, command|
-        say "  !bldgrn!#{key.ljust longest_key}  !txtrst!#{command.metadata[:summary]}"
+        summary = command.metadata[:summary] || ''
+        summary = summary[0..max_summary_size].strip
+        say "  !bldgrn!#{key.ljust longest_key}  !txtrst!#{summary}"
       end
 
       say "\n#{footer}" if footer
