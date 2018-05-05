@@ -40,16 +40,26 @@ module MisterBin
     end
 
     def show_subs
-      if commands.all.empty?
-        puts "No subcommands found"
+      if commands.empty?
+        say "No subcommands found"
       else
-        say "#{header}\n" if header
-        puts "Commands:"
-        commands.names.each { |command| puts "  #{name} #{command}" }
-        say "\n#{footer}" if footer
+        show_subs!
       end
 
       return 1
+    end
+
+    def show_subs!
+      longest_key = commands.keys.max_by(&:size).size
+
+      say "#{header}\n" if header
+      
+      say "Commands:"
+      commands.each do |key, command|
+        say "  !bldgrn!#{key.ljust longest_key}  !txtrst!#{command.metadata[:summary]}"
+      end
+
+      say "\n#{footer}" if footer
     end
 
     def commands

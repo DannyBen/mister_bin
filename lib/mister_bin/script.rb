@@ -23,14 +23,27 @@ module MisterBin
       1
     end
 
+    def evaluate
+      instance_eval script
+      metadata
+    end
+
     def docopt
       maker.docopt
     end
 
+    def metadata
+      { summary: help, version: version }
+    end
+
     # DSL
 
-    def help(text)
-      maker.help = text
+    def help(text=nil)
+      text ? maker.help = text : maker.help
+    end
+
+    def version(text=nil)
+      text ? maker.version = text : maker.version
     end
 
     def usage(text)
@@ -47,10 +60,6 @@ module MisterBin
 
     def example(text)
       maker.examples << text
-    end
-
-    def version(text)
-      maker.version = text
     end
 
     def action(&block)

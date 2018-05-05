@@ -9,8 +9,17 @@ module MisterBin
     end
 
     def run(argv=[])
-      script = Script.new file
       script.execute argv
+    end
+
+    def metadata
+      script.evaluate
+    end
+
+    private
+
+    def script
+      @script ||= Script.new file
     end
   end
 end

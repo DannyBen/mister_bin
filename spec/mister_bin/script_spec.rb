@@ -3,6 +3,12 @@ require 'spec_helper'
 describe Script do
   subject { described_class.new 'spec/workspace/app-ls.rb' }
 
+  describe '#evaluate' do
+    it "evaluates the script without executing the action" do
+      expect(subject.evaluate).to eq({:summary=>"Show list of files and more", :version=>"0.1.1"})
+    end
+  end
+
   describe '#execute' do
     context "without args" do
       it "shows usage" do
