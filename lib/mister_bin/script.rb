@@ -59,6 +59,10 @@ module MisterBin
       maker.examples << text
     end
 
+    def environment(name, value)
+      maker.env_vars << [name, value]
+    end
+
     def action(&block)
       @action_block = block
     end

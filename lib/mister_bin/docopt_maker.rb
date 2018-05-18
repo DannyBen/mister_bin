@@ -7,22 +7,23 @@ module MisterBin
   class DocoptMaker
     include Colsole
 
-    attr_reader :usages, :options, :examples, :params
+    attr_reader :usages, :options, :examples, :params, :env_vars
     attr_accessor :summary, :help, :version
 
     def initialize
-      @version  = '0.0.0'
+      @version  = nil
       @help     = nil
       @summary  = nil
       @usages   = []
       @options  = []
       @params   = []
       @examples = []
+      @env_vars = []
     end
 
     def docopt
       [summary_string, help_string, usage_string, options_string, 
-        params_string, examples_string].compact.join "\n"
+        params_string, env_string, examples_string].compact.join "\n"
     end
 
     private
@@ -52,22 +53,23 @@ module MisterBin
 
       result << "  -h --help"
       result << "    Show this help\n"
-      result << "  --version"
-      result << "    Show version number\n"
+
+      if version
+        result << "  --version"
+        result << "    Show version number\n"
+      end
+      
       result.join "\n"
     end
 
     def params_string
       return nil if params.empty?
+      key_value_block 'Parameters:', params
+    end
 
-      result = ["Parameters:"]
-      params.each do |param|
-        result << "  #{param[0]}"
-        result << word_wrap("    #{param[1]}")
-        result << ""
-      end
-
-      result.join "\n"
+    def env_string
+      return nil if env_vars.empty?
+      key_value_block 'Environment Variables:', env_vars
     end
 
     def examples_string
@@ -76,6 +78,17 @@ module MisterBin
       result = ["Examples:"]
       examples.each { |text| result << word_wrap("  #{text}") }
       result << ""
+      result.join "\n"
+    end
+
+    def key_value_block(caption, pairs)
+      result = [caption]
+      pairs.each do |key, value|
+        result << "  #{key}"
+        result << word_wrap("    #{value}")
+        result << ""
+      end
+
       result.join "\n"
     end
   end

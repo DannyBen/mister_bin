@@ -13,6 +13,8 @@ param "DIR", "Directory to list"
 example "app ls"
 example "app ls --all"
 
+environment 'SECRET', 'There is no spoon'
+
 action do |args|
   puts args['--all'] ? "success --all" : "success"
 end

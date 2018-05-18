@@ -21,6 +21,10 @@ Parameters:
   DIR
     Directory to list
 
+Environment Variables:
+  SECRET
+    There is no spoon
+
 Examples:
   app ls
   app ls --all

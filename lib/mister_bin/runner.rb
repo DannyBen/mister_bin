@@ -4,7 +4,7 @@ module MisterBin
   class Runner
     include Colsole
 
-    attr_reader :name, :basedir, :header, :footer, :isolate
+    attr_reader :name, :basedir, :header, :footer, :isolate, :version
 
     def initialize(name, opts={})
       @name = name
@@ -12,11 +12,15 @@ module MisterBin
       @footer = opts[:footer]
       @isolate = opts[:isolate]
       @basedir = opts[:basedir]
+      @version = opts[:version]
     end
 
     def run(argv=[])
       if argv.empty?
         show_subs
+      elsif argv == ['--version'] and version
+        puts version
+        return 1
       else
         execute argv
       end

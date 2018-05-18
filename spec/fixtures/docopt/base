@@ -15,5 +15,9 @@ Options:
   --version
     Show version number
 
+Environment Variables:
+  SECRET
+    There is no spoon
+
 Examples:
   mister --bin
