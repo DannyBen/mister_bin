@@ -9,6 +9,7 @@ describe DocoptMaker do
       subject.examples << 'mister --bin'
       subject.help = 'Help text here'
       subject.summary = 'Summary text here'
+      subject.env_vars << ['SECRET', 'There is no spoon']
     end
 
     it 'returns a string' do
