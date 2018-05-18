@@ -152,6 +152,7 @@ In addition, you can provide an options hash:
 ```ruby
 options = {
   header: 'My command line app'
+  version: '1.2.3',
   footer: 'Use --help for additional info',
   basedir: __dir__, 
   isolate: true
@@ -159,6 +160,10 @@ options = {
 
 runner = MisterBin::Runner.new 'appname', options
 ```
+
+#### `version`
+
+Version number to display when running the main executable with `--version`.
 
 #### `header`
 

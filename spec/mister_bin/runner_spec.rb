@@ -17,6 +17,29 @@ describe Runner do
       end
     end
 
+    context "with --version" do
+      context "when version was provided" do
+        let(:opts) {{ 
+          basedir: 'spec/workspace', 
+          version: '7.7.7' 
+        }}
+
+        it "shows version number" do
+          expect{ subject.run ['--version'] }.to output_fixture('runner/run-version')
+        end
+      end
+
+      context "when version was not provided" do
+        let(:opts) {{ 
+          basedir: 'spec/workspace', 
+        }}
+
+        it "treats it as a normal unknown command" do
+          expect{ subject.run ['--version'] }.to output_fixture('runner/run-no-version')
+        end
+      end
+    end
+
     context "with arguments" do
       it "executes the command" do
         expect{ subject.run ['ls'] }.to output_fixture('runner/run-ls')
