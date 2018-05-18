@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.2.3](https://github.com/DannyBen/mister_bin/tree/v0.2.3) (2018-05-18)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.2.2...v0.2.3)
+
+**Merged pull requests:**
+
+- Improvements round [\#13](https://github.com/DannyBen/mister_bin/pull/13) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.2.2](https://github.com/DannyBen/mister_bin/tree/v0.2.2) (2018-05-05)
 [Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.2.1...v0.2.2)
 
