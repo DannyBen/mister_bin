@@ -211,7 +211,7 @@ summary "A short sentence or paragraph describing the command"
 # Optional help string
 help "A longer explanation can go here"
 
-# Version string for the command
+# Optional version string for the command
 version "0.1.1"
 
 # Usage patterns. You can use either a compact docopt notation, or provide
@@ -228,6 +228,9 @@ option "-f --force", "Force delete"
 
 # Describe any parameters
 param "NAME", "The name of the repository"
+
+# Describe any environment variables that your app cares about
+environment "SECRET", "There is no spoon"
 
 # Provide examples
 example "app ls"

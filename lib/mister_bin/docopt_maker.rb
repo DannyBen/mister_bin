@@ -11,7 +11,7 @@ module MisterBin
     attr_accessor :summary, :help, :version
 
     def initialize
-      @version  = '0.0.0'
+      @version  = nil
       @help     = nil
       @summary  = nil
       @usages   = []
@@ -53,8 +53,12 @@ module MisterBin
 
       result << "  -h --help"
       result << "    Show this help\n"
-      result << "  --version"
-      result << "    Show version number\n"
+
+      if version
+        result << "  --version"
+        result << "    Show version number\n"
+      end
+      
       result.join "\n"
     end
 
