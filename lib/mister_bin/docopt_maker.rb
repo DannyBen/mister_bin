@@ -60,30 +60,13 @@ module MisterBin
 
     def params_string
       return nil if params.empty?
-
-      result = ["Parameters:"]
-      params.each do |param|
-        result << "  #{param[0]}"
-        result << word_wrap("    #{param[1]}")
-        result << ""
-      end
-
-      result.join "\n"
+      key_value_block 'Parameters:', params
     end
 
     def env_string
       return nil if env_vars.empty?
-
-      result = ["Environment Variables:"]
-      env_vars.each do |var|
-        result << "  #{var[0]}"
-        result << word_wrap("    #{var[1]}")
-        result << ""
-      end
-
-      result.join "\n"
+      key_value_block 'Environment Variables:', env_vars
     end
-
 
     def examples_string
       return nil if examples.empty?
@@ -91,6 +74,17 @@ module MisterBin
       result = ["Examples:"]
       examples.each { |text| result << word_wrap("  #{text}") }
       result << ""
+      result.join "\n"
+    end
+
+    def key_value_block(caption, pairs)
+      result = [caption]
+      pairs.each do |key, value|
+        result << "  #{key}"
+        result << word_wrap("    #{value}")
+        result << ""
+      end
+
       result.join "\n"
     end
   end
