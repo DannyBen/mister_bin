@@ -2,7 +2,7 @@ Mister Bin
 ==================================================
 
 [![Gem Version](https://badge.fury.io/rb/mister_bin.svg)](https://badge.fury.io/rb/mister_bin)
-[![Build Status](https://travis-ci.org/DannyBen/mister_bin.svg?branch=master)](https://travis-ci.org/DannyBen/mister_bin)
+[![Build Status](https://travis-ci.com/DannyBen/mister_bin.svg?branch=master)](https://travis-ci.com/DannyBen/mister_bin)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ae82443a99c2839d8ba8/maintainability)](https://codeclimate.com/github/DannyBen/mister_bin/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ae82443a99c2839d8ba8/test_coverage)](https://codeclimate.com/github/DannyBen/mister_bin/test_coverage)
 
