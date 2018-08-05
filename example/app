@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require 'mister_bin'
+require './dir_command'
+require './greet_command'
+
+runner = MisterBin::Runner.new version: '1.2.3',
+  header: "Sample header.",
+  footer: "Sample footer.\nRun `app COMMAND --help` for more information."
+
+runner.route 'dir',   to: DirCommand
+runner.route 'greet', to: GreetCommand
+
+runner.run ARGV

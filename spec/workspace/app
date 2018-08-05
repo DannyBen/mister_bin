@@ -1,6 +1,0 @@
-#!/usr/bin/env ruby
-require 'mister_bin'
-
-exit MisterBin::Runner.run 'app', ARGV,
-  header: "This is a sample header.",
-  footer: "This is a sample footer.\nUse --help for each command to get more information"
