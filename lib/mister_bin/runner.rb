@@ -4,15 +4,17 @@ module MisterBin
   class Runner
     include Colsole
 
-    attr_reader :name, :basedir, :header, :footer, :isolate, :version
+    attr_reader :header, :footer, :version, :commands
 
-    def initialize(name, opts={})
-      @name = name
+    def initialize(opts={})
       @header = opts[:header]
       @footer = opts[:footer]
-      @isolate = opts[:isolate]
-      @basedir = opts[:basedir]
       @version = opts[:version]
+      @commands = opts[:commands] || {}
+    end
+
+    def route(key, to: )
+      commands[key] = to
     end
 
     def run(argv=[])
@@ -29,18 +31,21 @@ module MisterBin
     private
 
     def execute(argv)
-      command = commands.find argv[0], argv[1]
+      command = find_command argv
 
       if command
-        execute_command command, argv
+        command.execute argv
       else
-        puts "Unknown command: #{argv[0]}\n\n"
+        say "!txtred!Unknown command\n"
         show_subs
       end
     end
 
-    def execute_command(command, argv)
-      command.run argv
+    def find_command(argv)
+      argv_line = argv.join ' '
+      candidates = commands.keys.select { |c| argv_line =~ /^#{c}/ }
+      candidate = candidates.first
+      candidate ? commands[candidate] : nil
     end
 
     def show_subs
@@ -61,7 +66,7 @@ module MisterBin
       
       say "Commands:"
       commands.each do |key, command|
-        summary = command.metadata[:summary] || ''
+        summary = command.description
         summary = summary[0..max_summary_size].strip
         say "  !bldgrn!#{key.ljust longest_key}  !txtrst!#{summary}"
       end
@@ -69,8 +74,5 @@ module MisterBin
       say "\n#{footer}" if footer
     end
 
-    def commands
-      @commands ||= Commands.new name, basedir, isolate: isolate
-    end
   end
 end

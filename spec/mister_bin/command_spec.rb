@@ -1,31 +1,31 @@
 require 'spec_helper'
 
 describe Command do
-  subject { described_class.new 'workspace create', 'spec/workspace' }
+  subject { described_class.dup }
 
-  describe '#run' do
-    it 'executes the script' do
-      expect_any_instance_of(Script).to receive(:execute)
-      subject.run
-    end
-  end
+  describe '::description' do
+    context "when summary is set" do
+      let(:summary) { 'it was a summary summer' }
+      before { subject.summary summary }
 
-  describe '#type' do
-    context "with a primary command" do
-      subject { described_class.new 'ls', 'spec/workspace' }
-
-      it "returns :primary" do
-        expect(subject.type).to eq :primary
+      it "returns the summary" do
+        expect(subject.description).to eq summary
       end
     end
 
-    context "with a secondary command" do
-      subject { described_class.new 'workspace create', 'spec/workspace' }
+    context "when summary is not set and help is set" do
+      let(:help) { 'it was a summary summer' }
+      before { subject.help help }
 
-      it "returns :primary" do
-        expect(subject.type).to eq :secondary
+      it "returns the help" do
+        expect(subject.description).to eq help
+      end
+    end
+
+    context "when both summary and help are not set" do
+      it "returns an empty string" do
+        expect(subject.description).to eq ''
       end
     end
   end
-
 end

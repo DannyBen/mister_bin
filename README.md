@@ -8,7 +8,7 @@ Mister Bin
 
 ---
 
-Build modular command line utilities.
+A command line framework for adding command line utilities to your gems.
 
 ---
 
@@ -41,7 +41,6 @@ Design Goals
   involved in building command line utilities.
 - Provide a mechanism for separating each command and subcommand to its 
   own file.
-- Support the ability to extend a given command from different sources.
 - Allow gem developers to easily add command line interface to their gems.
 - Allow for easy and straight forward testing of the generated CLI.
 
@@ -59,65 +58,10 @@ Usage
 
 Creating a command line utility with Mister Bin involves at least two files:
 
-1. The main "app" file. This is the actual "executable".
-2. One or more subcommand files. These files use the DSL.
-
-For example, assuming we would like to create a command line tool similar 
-to `git`, we will create two files:
-
-The `git` executable:
-
-```ruby
-# git
-#!/usr/bin/env ruby
-require 'mister_bin'
-
-runner = MisterBin::Runner.new 'git', basedir: __dir__
-exitcode =  runner.run ARGV
-```
-
-The file to handle the `git push` command:
-
-```ruby
-# git-push.rb
-version "0.1.0"
-help "Push git repo"
-
-usage "git push [--all]"
-
-option "--all", "Push all branches"
-
-action do |args|
-  if args['--all']
-    puts "pushing all"
-  else
-    puts "pushing, some..."
-  end
-end
-```
-
-Mister Bin also provides support for secondary subcommands. For example,
-if you want to create a command line that responds to the below commands:
-
-```
-$ git status
-$ git repo create
-$ git repo delete
-```
-
-You will need to create these files:
-
-1. `git`
-2. `git-status.rb`
-3. `git-repo-create.rb`
-4. `git-repo-delete.rb`
-
-Alternatively, if you prefer to handle all `repo` subcommands in a single 
-file, simply implement these instead:
-
-1. `git`
-2. `git-status.rb`
-3. `git-repo.rb`
+1. The main "bin" file. This is the actual executable, and if you are 
+   developing a gem, this will be in the `bin` directory of your folder.
+2. One or more subcommand files. These files use the DSL, and will usually be
+   placed in your `lib/<your gem>/commands folder.
 
 
 
@@ -130,35 +74,23 @@ Bin with options.
 This is the minimal code:
 
 ```ruby
-# git
 #!/usr/bin/env ruby
-require 'mister_bin'
+runner = MisterBin::Runner.new
 
-runner = MisterBin::Runner.new 'appname'
-exitcode = runner.run ARGV
-exit exitcode
+runner.route 'dir',   to: DirCommand
+runner.route 'greet', to: GreetCommand
+
+exit runner.run ARGV
 ```
 
 ### Runner Options
 
-The `Runner` method requires only the name of the main executable:
+The `Runner` object accepts an optional hash of options:
 
 ```ruby
-runner = MisterBin::Runner.new 'appname'
-```
-
-In addition, you can provide an options hash:
-
-```ruby
-options = {
+runner = MisterBin::Runner.new version: '1.2.3',
   header: 'My command line app'
-  version: '1.2.3',
   footer: 'Use --help for additional info',
-  basedir: __dir__, 
-  isolate: true
-}
-
-runner = MisterBin::Runner.new 'appname', options
 ```
 
 #### `version`
@@ -173,18 +105,28 @@ Text to display before the list of commands.
 
 Text to display after the list of commands.
 
-#### `basedir`
 
-The directory that holds the command files. 
+### Runner Routes
 
-By default, the runner will look for its command files in all the `PATH` 
-directories. You may add another directory to this search path by specifying
-it with `basedir`
+The `Runner` object needs to be told how to route commands that are executed
+in the command line.
 
-#### `isolate`
+Use the `#route` method as follows:
 
-If you wish to prevent runner from searching in the `PATH` directories, 
-specify `isolate: true`
+```ruby
+runner = MisterBin::Runner.new
+runner.route <regex>, to: <Class Name>
+```
+
+for example:
+
+```ruby
+runner = MisterBin::Runner.new
+runner.route 'dir', to: DirCommand
+runner.route 'greet', to: GreetCommand
+runner.route 'config init', to: ConfigInitializerCommand
+runner.route 'config show', to: ConfigDisplayerCommand
+```
 
 
 Creating Commands
