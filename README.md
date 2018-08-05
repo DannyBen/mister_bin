@@ -132,15 +132,25 @@ runner.route 'config show', to: ConfigDisplayerCommand
 Creating Commands
 --------------------------------------------------
 
-When the main executable is executed, it will look for files matching a 
-specific pattern in the same directory and in the `PATH`.
+Create command classes by in heriting from `MisterBin::Command`, for example:
 
-Assuming the main executable is called `myapp`, it will look for 
-`myapp-*.rb` files (e.g. `myapp-status.rb`)
+```ruby
+require 'mister_bin'
 
-These files do not need to be executables, and should use the DSL to define
-their actions.
+class GreetCommand < MisterBin::Command
+  summary "Say hi"
+  usage "app greet [NAME]"
+  param "NAME", "The recipient of the greeting"
 
+  def run(args)
+    name = args['NAME'] || 'Luke'
+    puts "#{name}... I am your father..."
+  end
+end
+```
+
+These classes can use any of the below DSL commands, and must define a
+`def run(args)` method.
 
 
 ### Command DSL
