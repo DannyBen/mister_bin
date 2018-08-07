@@ -17,6 +17,13 @@ describe Runner do
     it "adds a command and a handler to the commands hash" do
       subject.route "cmd", to: 'ClassConstant'
       expect(subject.commands['cmd']).to eq 'ClassConstant'
+    end
+  end
+
+  describe '#route_all' do
+    it "sets a global handler" do
+      subject.route_all to: 'ClassConstant'
+      expect(subject.handler).to eq 'ClassConstant'
     end    
   end
 end
