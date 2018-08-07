@@ -8,7 +8,7 @@ Mister Bin
 
 ---
 
-A command line framework for adding command line utilities to your gems.
+A command line framework for adding command line interface to your gems.
 
 ---
 

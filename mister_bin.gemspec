@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.name        = 'mister_bin'
   s.version     = MisterBin::VERSION
   s.date        = Date.today.to_s
-  s.summary     = "Modular command line framefowk"
-  s.description = "Build pluggable and modular command line tools with subcommands"
+  s.summary     = "Command line interface for your gems"
+  s.description = "Easily add command line interface to your gems"
   s.authors     = ["Danny Ben Shitrit"]
   s.email       = 'db@dannyben.com'
   s.files       = Dir['README.md', 'lib/**/*.*']
@@ -27,5 +27,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'runfile-tasks', '~> 0.4'
   s.add_development_dependency 'simplecov', '~> 0.16'
   s.add_development_dependency 'yard', '~> 0.9'
-  s.add_development_dependency 'github_changelog_generator', '~> 1.14'
 end
