@@ -1,5 +1,6 @@
 require 'spec_helper'
-require_relative '../../example/dir_command'
+require_relative '../samples/dir_command'
+require_relative '../samples/global_command'
 
 describe 'integration' do
   subject do
@@ -46,12 +47,22 @@ describe 'integration' do
   end
 
   context "when no subcommands are defined" do
-    subject do
-      MisterBin::Runner.new version: '3.7.7.0.7'
-    end
+    subject { MisterBin::Runner.new }
 
     it "shows an error" do
       expect{ subject.run }.to output_fixture('integration/no-subcommands') 
+    end
+  end
+
+  context "when using a global handler" do
+    subject { MisterBin::Runner.new handler: GlobalCommand }
+
+    it "sends all requests to the global handler" do
+      expect{ subject.run }.to output_fixture('integration/global-usage')
+    end
+
+    it "calls #run" do
+      expect{ subject.run 'greet Luke' }.to output_fixture('integration/global-run')
     end
   end
 

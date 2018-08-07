@@ -1,0 +1,12 @@
+Usage:
+  app say [MESSAGE]
+  app shout [MESSAGE]
+hello
+HELLO
+Usage:
+  app say [MESSAGE]
+  app shout [MESSAGE]
+
+Options:
+  -h --help
+    Show this help

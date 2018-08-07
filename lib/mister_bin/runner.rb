@@ -4,21 +4,28 @@ module MisterBin
   class Runner
     include Colsole
 
-    attr_reader :header, :footer, :version, :commands
+    attr_reader :header, :footer, :version, :commands, :handler
 
     def initialize(opts={})
       @header = opts[:header]
       @footer = opts[:footer]
       @version = opts[:version]
       @commands = opts[:commands] || {}
+      @handler = opts[:handler]
     end
 
-    def route(key, to: )
+    def route(key, to:)
       commands[key] = to
     end
 
+    def route_all(to:)
+      @handler = to
+    end
+
     def run(argv=[])
-      if argv.empty?
+      if handler
+        handler.execute argv
+      elsif argv.empty?
         show_subs
       elsif argv == ['--version'] and version
         puts version

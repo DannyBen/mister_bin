@@ -1,7 +1,10 @@
 require 'docopt'
+require 'colsole'
 
 module MisterBin
   class Command
+    include Colsole
+
     class << self
       def description
         maker.summary || maker.help || ''

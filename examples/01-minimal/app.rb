@@ -1,5 +1,7 @@
+#!/usr/bin/env ruby
 require 'mister_bin'
 
+# commands/greet_command.rb
 class GreetCommand < MisterBin::Command
   summary "Say hi"
   usage "app greet [NAME]"
@@ -10,3 +12,8 @@ class GreetCommand < MisterBin::Command
     puts "#{name}... I am your father..."
   end
 end
+
+# bin/app
+runner = MisterBin::Runner.new 
+runner.route 'greet', to: GreetCommand
+runner.run ARGV
