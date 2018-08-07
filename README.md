@@ -15,15 +15,17 @@ A command line framework for adding command line utilities to your gems.
 Contents
 --------------------------------------------------
 
-* [Contents](#contents)
 * [Installation](#installation)
 * [Design Goals](#design-goals)
-* [Example](#example)
+* [Examples](#examples)
 * [Usage](#usage)
 * [Creating the Main Executable](#creating-the-main-executable)
-    * [Runner Options](#runner-options)
+   * [Runner Options](#runner-options)
+   * [Runner Routes](#runner-routes)
 * [Creating Commands](#creating-commands)
-    * [Command DSL](#command-dsl)
+   * [Command DSL](#command-dsl)
+* [In the Wild](#in-the-wild)
+
 
 
 Installation
@@ -37,8 +39,6 @@ Design Goals
 --------------------------------------------------
 
 - Provide an easy and minimalistic DSL for building command line utilities.
-- Drastically reduce the need for boilerplate code and unnecessary wrappers 
-  involved in building command line utilities.
 - Provide a mechanism for separating each command and subcommand to its 
   own file.
 - Allow gem developers to easily add command line interface to their gems.
@@ -46,10 +46,10 @@ Design Goals
 
 
 
-Example
+Examples
 --------------------------------------------------
 
-See the [example](/example) folder.
+See the [example](/example) folder for several example use cases.
 
 
 
@@ -105,6 +105,19 @@ Text to display before the list of commands.
 
 Text to display after the list of commands.
 
+#### `commands`
+
+A hash of `{ 'regex' => ClassName }` to serve as command routes.
+This is equivalent to adding routes later with 
+`runner.route 'regex', to: ClassName`.
+
+
+#### `handler`
+
+Provide a single handler to all commands. When this is provided, `commands`
+are ignored.
+This is equivalent to using `runner.route_all to: ClassName`.
+
 
 ### Runner Routes
 
@@ -126,6 +139,20 @@ runner.route 'dir', to: DirCommand
 runner.route 'greet', to: GreetCommand
 runner.route 'config init', to: ConfigInitializerCommand
 runner.route 'config show', to: ConfigDisplayerCommand
+```
+
+If you wish to route all commands to the same class, you can use:
+
+```ruby
+runner = MisterBin::Runner.new
+runner.route_all to: <Class Name>
+```
+
+for example:
+
+```ruby
+runner = MisterBin::Runner.new
+runner.route_all to: GlobalCommand
 ```
 
 
@@ -192,13 +219,19 @@ environment "SECRET", "There is no spoon"
 # Provide examples
 example "app ls"
 example "app ls --all"
-
-# Define the actual action to execute when the command is called
-# All arguments will be provided to your block.
-action do |args|
-  puts args['--all'] ? "success --all" : "success"
-end
 ```
 
 
+In the Wild
+--------------------------------------------------
+
+Several examples of real world use of Mister Bin in the wild (well, 
+"In the Back Yard" really...).
+
+- [Kojo][2] - Command line utility for generating config files from templates and definition files
+- [Madman][3] - The Markdown Swiss Army Knife
+
+
 [1]: http://docopt.org/
+[2]: https://github.com/DannyBen/kojo
+[3]: https://github.com/DannyBen/madman

@@ -1,0 +1,15 @@
+Commands:
+  greet  Say hi
+Say hi
+
+Usage:
+  app greet [NAME]
+
+Options:
+  -h --help
+    Show this help
+
+Parameters:
+  NAME
+    The recipient of the greeting
+Luke... I am your father...
