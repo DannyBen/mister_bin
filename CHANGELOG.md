@@ -1,5 +1,19 @@
 # Change Log
 
+## [v0.3.1](https://github.com/DannyBen/mister_bin/tree/v0.3.1) (2018-08-07)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.3.0...v0.3.1)
+
+**Merged pull requests:**
+
+- Add support for global handler [\#15](https://github.com/DannyBen/mister_bin/pull/15) ([DannyBen](https://github.com/DannyBen))
+
+## [v0.3.0](https://github.com/DannyBen/mister_bin/tree/v0.3.0) (2018-08-05)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.2.3...v0.3.0)
+
+**Merged pull requests:**
+
+- Complete refactor [\#14](https://github.com/DannyBen/mister_bin/pull/14) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.2.3](https://github.com/DannyBen/mister_bin/tree/v0.2.3) (2018-05-18)
 [Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.2.2...v0.2.3)
 
