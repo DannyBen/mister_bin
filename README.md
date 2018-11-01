@@ -61,7 +61,7 @@ Creating a command line utility with Mister Bin involves at least two files:
 1. The main "bin" file. This is the actual executable, and if you are 
    developing a gem, this will be in the `bin` directory of your folder.
 2. One or more subcommand files. These files use the DSL, and will usually be
-   placed in your `lib/<your gem>/commands folder.
+   placed in your `lib/<your gem>/commands` folder.
 
 
 
