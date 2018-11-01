@@ -49,7 +49,7 @@ Design Goals
 Examples
 --------------------------------------------------
 
-See the [example](/example) folder for several example use cases.
+See the [examples](/examples) folder for several example use cases.
 
 
 
