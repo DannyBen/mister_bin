@@ -206,6 +206,10 @@ usage "app ls --all"
 usage "app ls [--all]"
 usage "app new NAME"
 
+# Describe any subcommands
+command "ls", "Show list of files"
+command "new", "Pretend to create a new application"
+
 # Describe any flags
 option "--all", "Also show hidden files"
 option "-f --force", "Force delete"

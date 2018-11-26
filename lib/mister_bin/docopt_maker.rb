@@ -7,7 +7,7 @@ module MisterBin
   class DocoptMaker
     include Colsole
 
-    attr_reader :usages, :options, :examples, :params, :env_vars
+    attr_reader :usages, :options, :examples, :params, :commands, :env_vars
     attr_accessor :summary, :help, :version
 
     def initialize
@@ -17,13 +17,14 @@ module MisterBin
       @usages   = []
       @options  = []
       @params   = []
+      @commands = []
       @examples = []
       @env_vars = []
     end
 
     def docopt
-      [summary_string, help_string, usage_string, options_string, 
-        params_string, env_string, examples_string].compact.join "\n"
+      [summary_string, help_string, usage_string, commands_string,
+        options_string, params_string, env_string, examples_string].compact.join "\n"
     end
 
     private
@@ -70,6 +71,11 @@ module MisterBin
     def env_string
       return nil if env_vars.empty?
       key_value_block 'Environment Variables:', env_vars
+    end
+
+    def commands_string
+      return nil if commands.empty?
+      key_value_block 'Commands:', commands
     end
 
     def examples_string

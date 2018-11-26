@@ -8,6 +8,8 @@ describe DocoptMaker do
         subject.options << ["--bin", "Option explained here"]
         subject.version = '1.2.3'
         subject.examples << 'mister --bin'
+        subject.params << ["NAME", "Directory name"]
+        subject.commands << ["ls", "Show list of files"]
         subject.help = 'Help text here'
         subject.summary = 'Summary text here'
         subject.env_vars << ['SECRET', 'There is no spoon']

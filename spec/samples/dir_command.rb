@@ -13,6 +13,8 @@ class DirCommand < MisterBin::Command
 
   param "DIR", "Directory to list"
 
+  command "dir", "Command description"
+
   example "app dir"
   example "app dir --all"
 
