@@ -7,6 +7,10 @@ Usage:
   app dir --all
   app dir DIR
 
+Commands:
+  dir
+    Command description
+
 Options:
   --all
     Also show hidden files

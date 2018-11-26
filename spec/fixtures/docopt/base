@@ -5,6 +5,10 @@ Help text here
 Usage:
   mister --bin
 
+Commands:
+  ls
+    Show list of files
+
 Options:
   --bin
     Option explained here
@@ -14,6 +18,10 @@ Options:
 
   --version
     Show version number
+
+Parameters:
+  NAME
+    Directory name
 
 Environment Variables:
   SECRET

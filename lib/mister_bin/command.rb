@@ -42,6 +42,10 @@ module MisterBin
         maker.options << [flags, text]
       end
 
+      def command(name, text)
+        maker.commands << [name, text]
+      end
+
       def param(param, text)
         maker.params << [param, text]
       end
