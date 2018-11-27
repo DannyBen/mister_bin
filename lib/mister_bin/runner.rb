@@ -50,7 +50,7 @@ module MisterBin
 
     def find_command(argv)
       argv_line = argv.join ' '
-      candidates = commands.keys.select { |c| argv_line =~ /^#{c}/ }
+      candidates = commands.keys.select { |c| argv_line =~ /^#{c}\b/ }
       candidate = candidates.first
       candidate ? commands[candidate] : nil
     end
