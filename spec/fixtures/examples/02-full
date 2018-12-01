@@ -45,3 +45,5 @@ Examples:
 Run that: ls
 Run this: ls -la
 Luke... I am your father...
+Fallback. One of the other commands were called
+{"ls"=>false, "--all"=>false, "new"=>false, "NAME"=>"Luke", "--force"=>false, "delete"=>true}

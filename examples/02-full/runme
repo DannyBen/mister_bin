@@ -5,3 +5,4 @@ set -x
 ./app.rb ls
 ./app.rb ls --all
 ./app.rb new Luke
+./app.rb delete Luke
