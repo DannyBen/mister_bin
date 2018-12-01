@@ -200,13 +200,15 @@ version "0.1.1"
 
 # Usage patterns. You can use either a compact docopt notation, or provide
 # multiple usage calls.
-# The first two will create the same result as the last one.
 usage "app ls"
-usage "app ls --all"
 usage "app ls [--all]"
 usage "app new NAME"
 
 # Describe any subcommands
+# Note that this has an additional important use:
+# - For each command defined with the `command` directive, we will search 
+#   for a method with the same name and a `_command` suffix.
+# - If no such method is found, we will call the generic `run` method.
 command "ls", "Show list of files"
 command "new", "Pretend to create a new application"
 
@@ -234,8 +236,10 @@ Several examples of real world use of Mister Bin in the wild (well,
 
 - [Kojo][2] - Command line utility for generating config files from templates and definition files
 - [Madman][3] - The Markdown Swiss Army Knife
+- [AudioAddict][4] - Command line utility for the AudioAddict radio network
 
 
 [1]: http://docopt.org/
 [2]: https://github.com/DannyBen/kojo
 [3]: https://github.com/DannyBen/madman
+[4]: https://github.com/DannyBen/audio_addict

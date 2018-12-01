@@ -14,10 +14,9 @@ class DemoCommand < MisterBin::Command
 
   # Usage patterns. You can use either a compact docopt notation, or provide
   # multiple usage calls.
-  # The first two will create the same result as the last one.
-  usage "app ls"
   usage "app ls [--all]"
   usage "app new NAME [--force]"
+  usage "app delete NAME"
 
   # Describe any flags
   option "--all", "Also show hidden files"
@@ -27,6 +26,10 @@ class DemoCommand < MisterBin::Command
   param "NAME", "The name of the repository"
 
   # Describe any subcommand
+  # Note that this has an additional important use:
+  # - For each command defined with the `command` directive, we will search 
+  #   for a method with the same name and a `_command` suffix.
+  # - If no such method is found, we will call the generic `run` method.
   command "ls", "Show list of files"
   command "new", "Pretend to create a new app"
 
@@ -38,15 +41,20 @@ class DemoCommand < MisterBin::Command
   example "app ls --all"
 
   # Implementation
-  def run(args)
-    if args['ls']
-      puts args['--all'] ? "Run this: ls -la" : "Run that: ls"
-    
-    elsif args['new']
-      name = args['NAME'] || 'Luke'
-      puts "#{name}... I am your father..."
+  # In this example, the `ls` and `new` commands have specialized handlers,
+  # while the `delete` command, will fall back to the `run` method.
+  def ls_command(args)
+    puts args['--all'] ? "Run this: ls -la" : "Run that: ls"
+  end
 
-    end
+  def new_command(args)
+    name = args['NAME'] || 'Luke'
+    puts "#{name}... I am your father..."
+  end
+
+  def run(args)
+    puts "Fallback. One of the other commands were called"
+    p args
   end
 end
 
