@@ -1,7 +1,3 @@
-Usage:
-  app ls [--all]
-  app new NAME [--force]
-  app delete NAME
 A short sentence or paragraph describing the command
 
 A longer explanation can go here
@@ -42,8 +38,3 @@ Environment Variables:
 Examples:
   app ls
   app ls --all
-Run that: ls
-Run this: ls -la
-Luke... I am your father...
-Fallback. One of the other commands were called
-{"ls"=>false, "--all"=>false, "new"=>false, "NAME"=>"Luke", "--force"=>false, "delete"=>true}

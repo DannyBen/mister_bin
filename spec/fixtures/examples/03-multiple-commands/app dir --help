@@ -1,20 +1,3 @@
-Commands:
-  greet  Say hi
-  dir    Show list of files
-Luke... I am your father...
-success --all
-Say hi
-
-Usage:
-  app greet [NAME]
-
-Options:
-  -h --help
-    Show this help
-
-Parameters:
-  NAME
-    The recipient of the greeting
 Show list of files
 
 A longer help can optionallly go here.

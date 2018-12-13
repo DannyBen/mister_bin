@@ -53,7 +53,7 @@ class DemoCommand < MisterBin::Command
   end
 
   def run(args)
-    puts "Fallback. One of the other commands were called"
+    puts "Fallback. A command that has no direct handler was called."
     p args
   end
 end
@@ -61,3 +61,18 @@ end
 # bin/app
 runner = MisterBin::Runner.new handler: DemoCommand
 runner.run ARGV
+
+
+# Usage Examples:
+#
+# See available commands
+# $ ./app.rb
+# 
+# See help
+# $ ./app.rb --help
+# 
+# Execute a given command
+# $ ./app.rb ls
+# $ ./app.rb ls --all
+# $ ./app.rb new Luke
+# $ ./app.rb delete Luke

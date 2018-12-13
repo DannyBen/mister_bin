@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-set -x
-./app.rb
-./app.rb greet --help
-./app.rb greet

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -x
-./app.rb
-./app.rb --help
-./app.rb ls
-./app.rb ls --all
-./app.rb new Luke
-./app.rb delete Luke

@@ -17,3 +17,15 @@ end
 runner = MisterBin::Runner.new 
 runner.route 'greet', to: GreetCommand
 runner.run ARGV
+
+# Usage Examples:
+#
+# See available commands
+# $ ./app.rb
+# 
+# See help for a given command
+# $ ./app.rb greet --help
+# 
+# Execute a given command
+# $ ./app.rb greet
+# $ ./app.rb greet Bob
