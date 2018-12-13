@@ -38,7 +38,8 @@ module MisterBin
     private
 
     def execute(argv)
-      command = find_command argv
+      argv = normalize_argv_command argv
+      command = commands[argv[0]]
 
       if command
         command.execute argv
@@ -48,11 +49,12 @@ module MisterBin
       end
     end
 
-    def find_command(argv)
-      argv_line = argv.join ' '
-      candidates = commands.keys.select { |c| argv_line =~ /^#{c}\b/ }
-      candidate = candidates.first
-      candidate ? commands[candidate] : nil
+    def normalize_argv_command(argv)
+      command = argv[0]
+      return argv if commands.has_key? command
+      candidates = commands.keys.select { |key| key =~ /^#{command}/ }
+      argv[0] = candidates.first if candidates.count == 1
+      argv
     end
 
     def show_subs

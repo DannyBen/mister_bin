@@ -12,7 +12,7 @@ module MisterBin
 
       def execute(argv=[])
         args = Docopt.docopt docopt, version: maker.version, argv: argv
-        instance = new
+        instance = new 
         target = find_target_command instance, args
         exitcode = instance.send target, args
         exitcode.is_a?(Numeric) ? exitcode : 0
