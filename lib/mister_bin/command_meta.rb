@@ -2,9 +2,9 @@ require 'colsole'
 
 module MisterBin
 
-  # This singleton class is responsible for generating a text string ready to be used
-  # by Docopt. 
-  class DocoptMaker
+  # This class is responsible for holding all the meta data for a command and
+  # for generating a text string ready to be used by Docopt. 
+  class CommandMeta
     include Colsole
 
     attr_reader :usages, :options, :examples, :params, :commands, :env_vars
@@ -27,7 +27,7 @@ module MisterBin
         options_string, params_string, env_string, examples_string].compact.join "\n"
     end
 
-    private
+  private
 
     def summary_string
       summary ? word_wrap(summary) + "\n" : nil
@@ -97,5 +97,6 @@ module MisterBin
 
       result.join "\n"
     end
+
   end
 end

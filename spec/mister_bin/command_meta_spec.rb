@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DocoptMaker do
+describe CommandMeta do
   describe '#docopt' do
     context "with all properties set" do
       before do

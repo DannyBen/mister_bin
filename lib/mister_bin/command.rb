@@ -7,17 +7,17 @@ module MisterBin
 
     attr_reader :args
 
-    def initialize(args)
+    def initialize(args = nil)
       @args = args
     end
 
     class << self
       def description
-        maker.summary || maker.help || ''
+        meta.summary || meta.help || ''
       end
 
       def execute(argv=[])
-        args = Docopt.docopt docopt, version: maker.version, argv: argv
+        args = Docopt.docopt docopt, version: meta.version, argv: argv
         instance = new args
         target = find_target_command instance, args
         exitcode = instance.send target
@@ -31,50 +31,50 @@ module MisterBin
       # DSL
 
       def summary(text)
-        maker.summary = text
+        meta.summary = text
       end
 
       def help(text)
-        maker.help = text
+        meta.help = text
       end
 
       def version(text)
-        maker.version = text
+        meta.version = text
       end
 
       def usage(text)
-        maker.usages << text
+        meta.usages << text
       end
 
       def option(flags, text)
-        maker.options << [flags, text]
+        meta.options << [flags, text]
       end
 
       def command(name, text)
         target_commands << name.to_sym
-        maker.commands << [name, text]
+        meta.commands << [name, text]
       end
 
       def param(param, text)
-        maker.params << [param, text]
+        meta.params << [param, text]
       end
 
       def example(text)
-        maker.examples << text
+        meta.examples << text
       end
 
       def environment(name, value)
-        maker.env_vars << [name, value]
+        meta.env_vars << [name, value]
+      end
+
+      def meta
+        @meta ||= CommandMeta.new
       end
 
     protected
 
-      def maker
-        @maker ||= DocoptMaker.new
-      end
-
       def docopt
-        maker.docopt
+        meta.docopt
       end
 
     private
@@ -92,6 +92,5 @@ module MisterBin
       end
 
     end
-
   end
 end
