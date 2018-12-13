@@ -163,7 +163,7 @@ runner.route_all to: GlobalCommand
 Creating Commands
 --------------------------------------------------
 
-Create command classes by in heriting from `MisterBin::Command`, for example:
+Create command classes by inheriting from `MisterBin::Command`, for example:
 
 ```ruby
 require 'mister_bin'
@@ -173,7 +173,8 @@ class GreetCommand < MisterBin::Command
   usage "app greet [NAME]"
   param "NAME", "The recipient of the greeting"
 
-  def run(args)
+  def run
+    # args hash is available everywhere in the calss
     name = args['NAME'] || 'Luke'
     puts "#{name}... I am your father..."
   end

@@ -6,7 +6,7 @@ class ServerCommand < MisterBin::Command
   usage "app server start"
   usage "app server stop"
 
-  def run(args)
+  def run
     p args
   end
 end
@@ -15,7 +15,7 @@ end
 class SayCommand < MisterBin::Command
   usage "app say SOMETHING"
 
-  def run(args)
+  def run
     p args
   end
 end
@@ -24,7 +24,7 @@ end
 class ConfigCommand < MisterBin::Command
   usage "app config edit"
 
-  def run(args)
+  def run
     p args
   end
 end

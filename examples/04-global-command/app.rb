@@ -6,7 +6,7 @@ class GlobalCommand < MisterBin::Command
   usage "app say [MESSAGE]"
   usage "app shout [MESSAGE]"
 
-  def run(args)
+  def run
     message = args['MESSAGE'] || 'hello'
 
     if args['say']

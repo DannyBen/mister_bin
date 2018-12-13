@@ -43,16 +43,16 @@ class DemoCommand < MisterBin::Command
   # Implementation
   # In this example, the `ls` and `new` commands have specialized handlers,
   # while the `delete` command, will fall back to the `run` method.
-  def ls_command(args)
+  def ls_command
     puts args['--all'] ? "Run this: ls -la" : "Run that: ls"
   end
 
-  def new_command(args)
+  def new_command
     name = args['NAME'] || 'Luke'
     puts "#{name}... I am your father..."
   end
 
-  def run(args)
+  def run
     puts "Fallback. A command that has no direct handler was called."
     p args
   end

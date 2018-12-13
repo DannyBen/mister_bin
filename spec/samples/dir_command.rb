@@ -20,7 +20,7 @@ class DirCommand < MisterBin::Command
 
   environment 'SECRET', 'There is no spoon'
 
-  def run(args)
+  def run
     puts args['--all'] ? "success --all" : "success"
   end
 end

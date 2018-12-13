@@ -5,6 +5,12 @@ module MisterBin
   class Command
     include Colsole
 
+    attr_reader :args
+
+    def initialize(args)
+      @args = args
+    end
+
     class << self
       def description
         maker.summary || maker.help || ''
@@ -12,9 +18,9 @@ module MisterBin
 
       def execute(argv=[])
         args = Docopt.docopt docopt, version: maker.version, argv: argv
-        instance = new 
+        instance = new args
         target = find_target_command instance, args
-        exitcode = instance.send target, args
+        exitcode = instance.send target
         exitcode.is_a?(Numeric) ? exitcode : 0
 
       rescue Docopt::Exit => e
