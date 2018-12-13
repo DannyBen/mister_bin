@@ -20,3 +20,16 @@ end
 # bin/app
 runner = MisterBin::Runner.new handler: GlobalCommand
 runner.run ARGV
+
+
+# Usage Examples:
+#
+# See available commands
+# $ ./app.rb
+# 
+# See help
+# $ ./app.rb --help
+# 
+# Execute a given command
+# $ ./app.rb say hello
+# $ ./app.rb shout

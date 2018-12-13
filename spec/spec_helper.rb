@@ -6,3 +6,4 @@ require 'bundler'
 Bundler.require :default, :development
 
 include MisterBin
+include Colsole

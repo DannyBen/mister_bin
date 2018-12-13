@@ -37,3 +37,19 @@ runner.route 'config', to: ConfigCommand
 runner.run ARGV
 
 
+# Usage Examples:
+#
+# See available commands
+# $ ./app.rb
+# 
+# Execute a given command
+# $ ./app.rb server start
+# $ ./app.rb config edit
+#
+# Execute a given command by just using its first letters
+# $ ./app.rb se start
+# $ ./app.rb c edit
+# 
+# This will not execute properly, since there are two commands that 
+# start with an `s`.
+# $ ./app.rb s start

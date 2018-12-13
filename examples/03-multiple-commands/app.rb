@@ -43,4 +43,15 @@ runner.route 'greet', to: GreetCommand
 runner.route 'dir',   to: DirCommand
 runner.run ARGV
 
-
+# Usage Examples:
+#
+# See available commands
+# $ ./app.rb
+# 
+# See help for each command
+# $ ./app.rb greet --help
+# $ ./app.rb dir --help
+# 
+# Execute a given command
+# $ ./app.rb greet
+# $ ./app.rb dir --all

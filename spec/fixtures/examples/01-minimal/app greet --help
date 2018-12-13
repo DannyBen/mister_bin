@@ -1,5 +1,3 @@
-Commands:
-  greet  Say hi
 Say hi
 
 Usage:
@@ -12,4 +10,3 @@ Options:
 Parameters:
   NAME
     The recipient of the greeting
-Luke... I am your father...

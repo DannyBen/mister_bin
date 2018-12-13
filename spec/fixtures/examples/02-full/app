@@ -1,0 +1,4 @@
+Usage:
+  app ls [--all]
+  app new NAME [--force]
+  app delete NAME

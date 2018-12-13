@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -x
-./app.rb
-./app.rb say hello
-./app.rb shout
-./app.rb --help
