@@ -1,0 +1,14 @@
+Commands:
+  server  
+  say     
+  config  
+{"server"=>true, "start"=>true, "stop"=>false}
+{"server"=>true, "start"=>true, "stop"=>false}
+Unknown command
+
+Commands:
+  server  
+  say     
+  config  
+{"config"=>true, "edit"=>true}
+{"config"=>true, "edit"=>true}

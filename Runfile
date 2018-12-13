@@ -6,7 +6,7 @@ include MisterBin
 
 title   "Mister Bin Developer Toolbelt"
 summary "Runfile tasks for building the Mister Bin gem"
-version MisterBin::VERSION
+version VERSION
 
 RunfileTasks::RubyGems.all 'mister_bin'
 RunfileTasks::Testing.rspec

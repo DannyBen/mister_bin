@@ -63,6 +63,11 @@ Creating a command line utility with Mister Bin involves at least two files:
 2. One or more subcommand files. These files use the DSL, and will usually be
    placed in your `lib/<your gem>/commands` folder.
 
+WHen executing the commands, you can use only the first letters of the 
+command name. Mister Bin will search for the command that starts with your 
+input, and if it finds one and one only, it will execute it. For example, 
+if you have a `server` command, you can execute it with `yourapp s` if it
+is the only command that starts with an `s`.
 
 
 Creating the Main Executable
@@ -107,9 +112,9 @@ Text to display after the list of commands.
 
 #### `commands`
 
-A hash of `{ 'regex' => ClassName }` to serve as command routes.
+A hash of `{ 'command_name' => ClassName }` to serve as command routes.
 This is equivalent to adding routes later with 
-`runner.route 'regex', to: ClassName`.
+`runner.route 'command_name', to: ClassName`.
 
 
 #### `handler`
@@ -128,7 +133,7 @@ Use the `#route` method as follows:
 
 ```ruby
 runner = MisterBin::Runner.new
-runner.route <regex>, to: <Class Name>
+runner.route <command_name>, to: <Class Name>
 ```
 
 for example:
@@ -137,8 +142,7 @@ for example:
 runner = MisterBin::Runner.new
 runner.route 'dir', to: DirCommand
 runner.route 'greet', to: GreetCommand
-runner.route 'config init', to: ConfigInitializerCommand
-runner.route 'config show', to: ConfigDisplayerCommand
+runner.route 'config', to: ConfigCommand
 ```
 
 If you wish to route all commands to the same class, you can use:

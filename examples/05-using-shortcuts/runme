@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -x
+./app.rb
+./app.rb server start
+./app.rb se start
+./app.rb s start
+./app.rb c edit
+./app.rb config edit
