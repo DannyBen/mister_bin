@@ -1,5 +1,43 @@
 # Change Log
 
+## [v0.6.0](https://github.com/DannyBen/mister_bin/tree/v0.6.0) (2018-12-13)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.5.0...v0.6.0)
+
+**Implemented enhancements:**
+
+- Consider moving args from \#run to \#initialize and provide attr\_accessor [\#21](https://github.com/DannyBen/mister_bin/issues/21)
+
+**Closed issues:**
+
+- Improve test suite and examples [\#20](https://github.com/DannyBen/mister_bin/issues/20)
+
+**Merged pull requests:**
+
+- Move args from \#run to attr\_accessor [\#23](https://github.com/DannyBen/mister_bin/pull/23) ([DannyBen](https://github.com/DannyBen))
+- Improve examples and example tests [\#22](https://github.com/DannyBen/mister_bin/pull/22) ([DannyBen](https://github.com/DannyBen))
+- Allow running command by using only its first letters [\#19](https://github.com/DannyBen/mister_bin/pull/19) ([DannyBen](https://github.com/DannyBen))
+
+## [v0.5.0](https://github.com/DannyBen/mister_bin/tree/v0.5.0) (2018-12-01)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.4.1...v0.5.0)
+
+**Merged pull requests:**
+
+- Add ability to define command target methods [\#18](https://github.com/DannyBen/mister_bin/pull/18) ([DannyBen](https://github.com/DannyBen))
+
+## [v0.4.1](https://github.com/DannyBen/mister_bin/tree/v0.4.1) (2018-11-27)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.4.0...v0.4.1)
+
+**Merged pull requests:**
+
+- Fix cases where there are similar commands [\#17](https://github.com/DannyBen/mister_bin/pull/17) ([DannyBen](https://github.com/DannyBen))
+
+## [v0.4.0](https://github.com/DannyBen/mister_bin/tree/v0.4.0) (2018-11-26)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.3.1...v0.4.0)
+
+**Merged pull requests:**
+
+- Add support for sub-sub-commands [\#16](https://github.com/DannyBen/mister_bin/pull/16) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.3.1](https://github.com/DannyBen/mister_bin/tree/v0.3.1) (2018-08-07)
 [Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.3.0...v0.3.1)
 
