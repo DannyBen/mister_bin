@@ -7,7 +7,7 @@ class GreetCommand < MisterBin::Command
   usage "app greet [NAME]"
   param "NAME", "The recipient of the greeting"
 
-  def run(args)
+  def run
     name = args['NAME'] || 'Luke'
     puts "#{name}... I am your father..."
   end

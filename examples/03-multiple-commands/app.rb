@@ -7,7 +7,7 @@ class GreetCommand < MisterBin::Command
   usage "app greet [NAME]"
   param "NAME", "The recipient of the greeting"
 
-  def run(args)
+  def run
     name = args['NAME'] || 'Luke'
     puts "#{name}... I am your father..."
   end
@@ -32,7 +32,7 @@ class DirCommand < MisterBin::Command
 
   environment 'SECRET', 'There is no spoon'
 
-  def run(args)
+  def run
     puts args['--all'] ? "success --all" : "success"
   end
 end
