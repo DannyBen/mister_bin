@@ -27,6 +27,14 @@ module MisterBin
         options_string, params_string, env_string, examples_string].compact.join "\n"
     end
 
+    def description
+      summary || help || ''
+    end
+
+    def long_description
+      summary && help ? "#{summary}\n\n#{help}" : description
+    end
+
   private
 
     def summary_string

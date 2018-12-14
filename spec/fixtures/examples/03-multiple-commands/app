@@ -1,3 +1,7 @@
+Sample command
+
 Commands:
   greet  Say hi
   dir    Show list of files
+
+For additional info, run app --help or app COMMAND --help

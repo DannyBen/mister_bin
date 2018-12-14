@@ -28,6 +28,20 @@ describe 'integration' do
     end
   end
 
+  context "with --help", :focus do
+    it "shows all commands and their long description" do
+      expect{ subject.run ["--help"] }.to output_fixture('integration/help') 
+    end
+
+    context "when no subcommands are defined" do
+      subject { MisterBin::Runner.new }
+
+      it "errors gracefully" do
+        expect{ subject.run ['--help'] }.to output_fixture('integration/no-subcommands') 
+      end
+    end
+  end
+
   context "with subcommand" do
     it "executes the subcommand" do
       expect{ subject.run ["dir"] }.to output_fixture('integration/dir') 
@@ -49,7 +63,7 @@ describe 'integration' do
   context "when no subcommands are defined" do
     subject { MisterBin::Runner.new }
 
-    it "shows an error" do
+    it "errors gracefully" do
       expect{ subject.run }.to output_fixture('integration/no-subcommands') 
     end
   end

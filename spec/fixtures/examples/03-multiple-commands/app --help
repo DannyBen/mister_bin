@@ -1,0 +1,11 @@
+Sample command
+
+greet
+  Say hi
+
+dir
+  Show list of files
+  
+  A longer help can optionallly go here.
+
+For additional info, run app --help or app COMMAND --help
