@@ -50,7 +50,7 @@ Feature Highlights
 Examples
 --------------------------------------------------
 
-![Demo](https://raw.githubusercontent.com/DannyBen/audio_addict/master/demo/demo.gif)
+![Demo](https://raw.githubusercontent.com/DannyBen/mister_bin/master/demo/demo.gif)
 
 - See the [examples](/examples) folder for several example use cases.
 - For real world examples, see the [In the Wild](#in-the-wild) section.
