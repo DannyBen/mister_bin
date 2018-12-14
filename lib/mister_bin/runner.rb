@@ -99,8 +99,12 @@ module MisterBin
       say "#{header}\n" if header
 
       commands.each do |key, command|
-        say "!bldgrn!#{key}"
-        say word_wrap "  #{command.meta.long_description}"
+        meta = command.meta
+        next unless meta.help or meta.summary
+
+        say "!txtgrn!#{key}"
+        help = meta.help || meta.summary
+        say word_wrap "  #{help}"
         say ""
       end
 
