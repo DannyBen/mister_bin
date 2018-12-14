@@ -27,7 +27,9 @@ module MisterBin
         handler.execute argv
       elsif argv.empty?
         show_subs
-      elsif argv == ['--version'] and version
+      elsif argv == ['--help'] or argv == ['-h']
+        show_help
+      elsif version and (argv == ['--version'] or argv == ['-v'])
         puts version
         return 1
       else
@@ -75,13 +77,36 @@ module MisterBin
       
       say "Commands:"
       commands.each do |key, command|
-        summary = command.description
+        summary = command.meta.description
         summary = summary[0..max_summary_size].strip
         say "  !bldgrn!#{key.ljust longest_key}  !txtrst!#{summary}"
       end
 
       say "\n#{footer}" if footer
     end
+
+    def show_help
+      if commands.empty?
+        say "No subcommands found"
+      else
+        show_help!
+      end
+
+      return 1
+    end
+
+    def show_help!
+      say "#{header}\n" if header
+
+      commands.each do |key, command|
+        say "!bldgrn!#{key}"
+        say word_wrap "  #{command.meta.long_description}"
+        say ""
+      end
+
+      say "#{footer}" if footer
+    end
+
 
   end
 end

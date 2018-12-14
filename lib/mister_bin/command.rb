@@ -12,10 +12,6 @@ module MisterBin
     end
 
     class << self
-      def description
-        meta.summary || meta.help || ''
-      end
-
       def execute(argv=[])
         args = Docopt.docopt docopt, version: meta.version, argv: argv
         instance = new args

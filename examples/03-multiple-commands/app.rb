@@ -38,7 +38,9 @@ class DirCommand < MisterBin::Command
 end
 
 # bin/app
-runner = MisterBin::Runner.new 
+runner = MisterBin::Runner.new version: '1.2.3', header: 'Sample command',
+  footer: "For additional info, run !txtgrn!app --help!txtrst! or !txtgrn!app COMMAND --help!txtrst!"
+
 runner.route 'greet', to: GreetCommand
 runner.route 'dir',   to: DirCommand
 runner.run ARGV
@@ -47,6 +49,14 @@ runner.run ARGV
 #
 # See available commands
 # $ ./app.rb
+#
+# See version number
+# $ ./app.rb -v
+# $ ./app.rb --version
+#
+# See a detailed description of all commands
+# $ ./app.rb -h
+# $ ./app.rb --help
 # 
 # See help for each command
 # $ ./app.rb greet --help
