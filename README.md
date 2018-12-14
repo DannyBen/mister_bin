@@ -17,7 +17,7 @@ Contents
 --------------------------------------------------
 
 * [Installation](#installation)
-* [Design Goals](#design-goals)
+* [Feature Highlights](#feature-highlights)
 * [Examples](#examples)
 * [Usage](#usage)
 * [Creating the Main Executable](#creating-the-main-executable)
@@ -45,16 +45,15 @@ Feature Highlights
 - Commands can have subcommands.
 - Designed for gem developers.
 
-This screencast shows several command line applications that use Mister Bin.
-
-![Demo](https://raw.githubusercontent.com/DannyBen/mister_bin/master/demo/demo.gif)
-
 
 
 Examples
 --------------------------------------------------
 
-See the [examples](/examples) folder for several example use cases.
+![Demo](https://raw.githubusercontent.com/DannyBen/audio_addict/master/demo/demo.gif)
+
+- See the [examples](/examples) folder for several example use cases.
+- For real world examples, see the [In the Wild](#in-the-wild) section.
 
 
 
