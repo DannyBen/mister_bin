@@ -1,9 +1,7 @@
 This is a sample header.
 
-[1;32mdir
-[0m  Show list of files and more
-  
-  A longer help can optionallly go here.
+[0;32mdir
+[0m  A longer help can optionallly go here.
 
 This is a sample footer.
 Use --help for each command to get more information
