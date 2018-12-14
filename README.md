@@ -8,7 +8,8 @@ Mister Bin
 
 ---
 
-A command line framework for adding command line interface to your gems.
+Mister Bin lets you develop rich, scalable and testable command line 
+interfaces for your gem or other Ruby application.
 
 ---
 
@@ -35,14 +36,18 @@ Installation
 
 
 
-Design Goals
+Feature Highlights
 --------------------------------------------------
 
-- Provide an easy and minimalistic DSL for building command line utilities.
-- Provide a mechanism for separating each command and subcommand to its 
-  own file.
-- Allow gem developers to easily add command line interface to their gems.
-- Allow for easy and straight forward testing of the generated CLI.
+- Easy to use and minimalistic DSL for describing your command line actions.
+- Each command is defined with a separate class for maximum testability and 
+  scalability.
+- Commands can have subcommands.
+- Designed for gem developers.
+
+This screencast shows several command line applications that use Mister Bin.
+
+![Demo](https://raw.githubusercontent.com/DannyBen/mister_bin/master/demo/demo.gif)
 
 
 
@@ -239,9 +244,10 @@ In the Wild
 Several examples of real world use of Mister Bin in the wild (well, 
 "In the Back Yard" really...).
 
-- [Kojo][2] - Command line utility for generating config files from templates and definition files
-- [Madman][3] - The Markdown Swiss Army Knife
 - [AudioAddict][4] - Command line utility for the AudioAddict radio network
+- [Madman][3] - The Markdown Swiss Army Knife
+- [Kojo][2] - Command line utility for generating config files from templates 
+  and definition files
 
 
 [1]: http://docopt.org/
