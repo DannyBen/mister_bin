@@ -1,5 +1,20 @@
 # Change Log
 
+## [v0.6.2](https://github.com/DannyBen/mister_bin/tree/v0.6.2) (2018-12-14)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.6.1...v0.6.2)
+
+**Merged pull requests:**
+
+- Change super --help format [\#26](https://github.com/DannyBen/mister_bin/pull/26) ([DannyBen](https://github.com/DannyBen))
+
+## [v0.6.1](https://github.com/DannyBen/mister_bin/tree/v0.6.1) (2018-12-14)
+[Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.6.0...v0.6.1)
+
+**Merged pull requests:**
+
+- Add ability to use --help when there are multiple commands [\#25](https://github.com/DannyBen/mister_bin/pull/25) ([DannyBen](https://github.com/DannyBen))
+- Make command meta data available to outside callers [\#24](https://github.com/DannyBen/mister_bin/pull/24) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.6.0](https://github.com/DannyBen/mister_bin/tree/v0.6.0) (2018-12-13)
 [Full Changelog](https://github.com/DannyBen/mister_bin/compare/v0.5.0...v0.6.0)
 
