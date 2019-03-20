@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files       = Dir['README.md', 'lib/**/*.*']
   s.homepage    = 'https://github.com/dannyben/mister_bin'
   s.license     = 'MIT'
-  s.required_ruby_version = ">= 2.4.0"
+  s.required_ruby_version = ">= 2.3.0"
 
   s.add_runtime_dependency 'colsole', '~> 0.5'
   s.add_runtime_dependency 'docopt', '~> 0.6'
