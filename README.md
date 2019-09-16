@@ -284,7 +284,7 @@ terminal = MisterBin::Terminal.new runner, {
 ```
 
 These are the available options. All string options are displayed with 
-the [Colsole][5] `say` so they support color markers.
+the [Colsole][5] `say` command so they support color markers.
 
 #### `header`
 
