@@ -324,6 +324,8 @@ Several examples of real world use of Mister Bin in the wild (well,
 - [Madman][3] - The Markdown Swiss Army Knife
 - [Kojo][2] - Command line utility for generating config files from templates 
   and definition files
+- [Jobly][6] - Compact job server with API, CLI, Web UI
+- [Slacktail][7] - Command line utility for following your Slack chat from the terminal
 
 
 [1]: http://docopt.org/
@@ -331,3 +333,5 @@ Several examples of real world use of Mister Bin in the wild (well,
 [3]: https://github.com/DannyBen/madman
 [4]: https://github.com/DannyBen/audio_addict
 [5]: https://github.com/dannyben/colsole
+[6]: https://github.com/dannyben/jobly
+[7]: https://github.com/dannyben/slacktail
