@@ -43,7 +43,7 @@ module MisterBin
 
         command = Shellwords.shellwords input
         if command.first.start_with? system_character
-          system input[1..]
+          system input[1..-1]
         else
           runner.run command
         end
