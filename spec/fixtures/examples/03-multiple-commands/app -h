@@ -1,9 +1,9 @@
 Sample command
 
-greet
-  Say hi
+[0;32mgreet
+[0m  Say hi
 
-dir
-  A longer help can optionallly go here.
+[0;32mdir
+[0m  A longer help can optionallly go here.
 
-For additional info, run app --help or app COMMAND --help
+For additional info, run [0;32mapp --help[0m or [0;32mapp COMMAND --help[0m
