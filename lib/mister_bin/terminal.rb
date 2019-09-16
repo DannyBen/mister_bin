@@ -18,35 +18,46 @@ module MisterBin
       Readline.completion_proc = autocomplete_handler if autocomplete
 
       say header if header
-
-      begin
-        input_loop
-      # :nocov:
-      rescue Interrupt
-        say exit_message if exit_message
-        exit 1
-      rescue => e
-        puts e.backtrace.reverse if ENV['DEBUG']
-        say! "!txtred!#{e.class}: #{e.message}"
-      # :nocov:
-      end
+      safe_input_loop
     end
 
   private
 
+    def safe_input_loop
+      input_loop
+    # :nocov:
+    rescue Interrupt
+      say exit_message if exit_message
+      exit 1
+    rescue => e
+      puts e.backtrace.reverse if ENV['DEBUG']
+      say! "!txtred!#{e.class}: #{e.message}"
+    # :nocov:
+    end
+
     def input_loop
       while input = Readline.readline(prompt, true) do
-        if input == exit_command
-          say exit_message if exit_message
-          break
-        end
+        break unless execute input
+      end
+    end
 
-        command = Shellwords.shellwords input
-        if command.first.start_with? system_character
-          system input[1..-1]
-        else
-          runner.run command
-        end
+    def execute(input)
+      if input == exit_command
+        say exit_message if exit_message
+        false
+      else
+        execute_command input
+        true
+      end
+    end
+
+    def execute_command(input)
+      command = Shellwords.shellwords input
+
+      if command.first.start_with? system_character
+        system input[1..-1]
+      else
+        runner.run command
       end
     end
 
