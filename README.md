@@ -324,7 +324,7 @@ Several examples of real world use of Mister Bin in the wild (well,
 - [Madman][3] - The Markdown Swiss Army Knife
 - [Kojo][2] - Command line utility for generating config files from templates 
   and definition files
-- [Jobly][6] - Compact job server with API, CLI, Web UI
+- [Jobly][6] - Compact job server with API, CLI and Web UI
 - [Slacktail][7] - Command line utility for following your Slack chat from the terminal
 
 
