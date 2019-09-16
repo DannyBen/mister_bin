@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'examples' do
   it "works" do
     dirs = Dir['examples/*'].select { |f| File.directory? f }
-    # dirs = Dir["examples/01*"]
+    # dirs = Dir["examples/06*"]
 
     dirs.each do |example|
       name = File.basename example

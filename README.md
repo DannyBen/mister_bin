@@ -24,6 +24,9 @@ Contents
    * [Runner Routes](#runner-routes)
 * [Creating Commands](#creating-commands)
    * [Command DSL](#command-dsl)
+* [Interactive Terminal](#interactive-terminal)
+   * [Terminal features](#terminal-features)
+   * [Terminal options](#terminal-options)
 * [In the Wild](#in-the-wild)
 
 
@@ -71,6 +74,7 @@ command name. Mister Bin will search for the command that starts with your
 input, and if it finds one and one only, it will execute it. For example, 
 if you have a `server` command, you can execute it with `yourapp s` if it
 is the only command that starts with an `s`.
+
 
 
 Creating the Main Executable
@@ -163,6 +167,7 @@ runner.route_all to: GlobalCommand
 ```
 
 
+
 Creating Commands
 --------------------------------------------------
 
@@ -236,6 +241,79 @@ example "app ls --all"
 ```
 
 
+
+Interactive Terminal
+--------------------------------------------------
+Mister Bin comes with an interactive terminal thaht allows you to set up a
+console that sends all commands to your runner.
+
+![Demo](https://raw.githubusercontent.com/DannyBen/mister_bin/master/demo/terminal.gif)
+
+See the [terminal example](/examples/06-terminal) folder.
+
+In order to start a terminal, you need to provide it with a 
+`MisterBin::Runner` object:
+
+```ruby
+runner = MisterBin::Runner.new 
+runner.route 'greet', to: GreetCommand
+terminal = MisterBin::Terminal.new runner
+terminal.start
+```
+
+### Terminal features
+
+- All commands will be routed to the runner.
+- Customizable autocomplete.
+- Command history (up/down arrows).
+- Start a command with a `/` in order to run a system (shell) command.
+- Type `exit` to quit (or Ctrl+D or Ctrl+C).
+- Customizable header, exit message, exit command and prompt.
+
+
+### Terminal options
+
+The `MisterBin::Terminal.new` command accepts an optional second argument. If 
+provided, it should be a options hash:
+
+```
+terminal = MisterBin::Terminal.new runner, {
+  header: "Welcome",
+  autocomplete: %w[--help greet]
+}
+```
+
+These are the available options. All string options are displayed with 
+the [Colsole][5] `say` command so they support color markers.
+
+#### `header`
+
+Message to show when starting the terminal. Default: blank.
+
+#### `prompt`
+
+The string for the prompt. Default: `"\n> "`.
+
+#### `autocomplete`
+
+An array of words to autocomplete by pressing Tab. Default: none.
+
+#### `exit_message`
+
+The message to show on exit. Default: blank.
+
+#### `exit_command`
+
+The command that if typed, will exit the terminal. Default: `"exit"`.
+
+#### `system_character`
+
+The prefix character that if typed at the beginning of a command, will avoid
+executing the runner, and instead execute a system (shell) command. 
+Default: `"/"`.
+
+
+
 In the Wild
 --------------------------------------------------
 
@@ -252,3 +330,4 @@ Several examples of real world use of Mister Bin in the wild (well,
 [2]: https://github.com/DannyBen/kojo
 [3]: https://github.com/DannyBen/madman
 [4]: https://github.com/DannyBen/audio_addict
+[5]: https://github.com/dannyben/colsole
