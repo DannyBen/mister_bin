@@ -18,7 +18,6 @@ runner = MisterBin::Runner.new
 runner.route 'greet', to: GreetCommand
 
 terminal = MisterBin::Terminal.new runner, {
-  list: %w[greet --help],
   header: "Welcome",
   autocomplete: %w[--help greet]
 }

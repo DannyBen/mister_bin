@@ -50,20 +50,16 @@ module MisterBin
       end
     end
 
-    def system_character
-      @system_character ||= options[:system_character] || '/'
-    end
-
     def header
       @header ||= options[:header]
     end
 
-    def autocomplete
-      @autocomplete ||= options[:autocomplete]&.sort
-    end
-
     def prompt
       @prompt ||= options[:prompt] || "\n> "
+    end
+
+    def autocomplete
+      @autocomplete ||= options[:autocomplete]&.sort
     end
 
     def exit_message
@@ -72,6 +68,10 @@ module MisterBin
 
     def exit_command
       @exit_command ||= options[:exit_command] || 'exit'
+    end
+
+    def system_character
+      @system_character ||= options[:system_character] || '/'
     end
 
     def autocomplete_handler
