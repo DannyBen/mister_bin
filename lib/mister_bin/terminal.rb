@@ -31,7 +31,8 @@ module MisterBin
       false
     rescue => e
       puts e.backtrace.reverse if ENV['DEBUG']
-      say! "!txtred!#{e.class}: #{e.message}"
+      say "!txtred!#{e.class}"
+      say e.message
       true
     # :nocov:
     end
