@@ -42,7 +42,7 @@ module MisterBin
     end
 
     def execute(input)
-      if input == exit_command
+      if exit_commands.include? input
         say exit_message if exit_message
         false
       else
@@ -54,7 +54,7 @@ module MisterBin
     def execute_command(input)
       command = Shellwords.shellwords input
 
-      if command.first.start_with? system_character
+      if command.first&.start_with? system_character
         system input[1..-1]
       else
         runner.run command
@@ -77,8 +77,8 @@ module MisterBin
       @exit_message ||= options[:exit_message]
     end
 
-    def exit_command
-      @exit_command ||= options[:exit_command] || 'exit'
+    def exit_commands
+      @exit_commands ||= options[:exit_commands] || ['exit', 'q']
     end
 
     def system_character
