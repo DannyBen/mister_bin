@@ -18,7 +18,8 @@ module MisterBin
       Readline.completion_proc = autocomplete_handler if autocomplete
 
       say header if header
-      safe_input_loop
+      runner.run if show_usage
+      loop { break unless safe_input_loop }
     end
 
   private
@@ -28,10 +29,11 @@ module MisterBin
     # :nocov:
     rescue Interrupt
       say exit_message if exit_message
-      exit 1
+      false
     rescue => e
       puts e.backtrace.reverse if ENV['DEBUG']
       say! "!txtred!#{e.class}: #{e.message}"
+      true
     # :nocov:
     end
 
@@ -63,6 +65,10 @@ module MisterBin
 
     def header
       @header ||= options[:header]
+    end
+
+    def show_usage
+      options[:show_usage]
     end
 
     def prompt
