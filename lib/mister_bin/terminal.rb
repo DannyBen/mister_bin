@@ -17,8 +17,7 @@ module MisterBin
       Readline.completion_append_character = " "
       Readline.completion_proc = autocomplete_handler if autocomplete
 
-      say header if header
-      runner.run if show_usage
+      welcome_messages
       loop { break unless safe_input_loop }
     end
 
@@ -35,6 +34,11 @@ module MisterBin
       say! "!txtred!#{e.class}: #{e.message}"
       true
     # :nocov:
+    end
+
+    def welcome_messages
+      say header if header
+      runner.run if show_usage
     end
 
     def input_loop
