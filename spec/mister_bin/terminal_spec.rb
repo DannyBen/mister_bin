@@ -19,7 +19,7 @@ describe Terminal do
         autocomplete: %w[search list],
         prompt: ">>>",
         exit_message: 'See you',
-        exit_command: 'quit'
+        exit_commands: ['quit', 'exit', 'bye']
       }
     end
 

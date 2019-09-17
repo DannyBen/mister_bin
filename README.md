@@ -288,7 +288,13 @@ the [Colsole][5] `say` command so they support color markers.
 
 #### `header`
 
-Message to show when starting the terminal. Default: blank.
+Message to show when starting the terminal.
+Default: blank.
+
+#### `show_usage`
+
+If true, the runner will be executed on startup to show its usage patterns.
+Default: `false`.
 
 #### `prompt`
 
@@ -296,15 +302,18 @@ The string for the prompt. Default: `"\n> "`.
 
 #### `autocomplete`
 
-An array of words to autocomplete by pressing Tab. Default: none.
+An array of words to autocomplete by pressing Tab.
+Default: none.
 
 #### `exit_message`
 
-The message to show on exit. Default: blank.
+The message to show on exit.
+Default: blank.
 
-#### `exit_command`
+#### `exit_commands`
 
-The command that if typed, will exit the terminal. Default: `"exit"`.
+An array of commands that if typed, will exit the terminal.
+Default: `["exit", "q"]`.
 
 #### `system_character`
 

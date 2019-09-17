@@ -17,8 +17,8 @@ module MisterBin
       Readline.completion_append_character = " "
       Readline.completion_proc = autocomplete_handler if autocomplete
 
-      say header if header
-      safe_input_loop
+      welcome_messages
+      loop { break unless safe_input_loop }
     end
 
   private
@@ -28,11 +28,17 @@ module MisterBin
     # :nocov:
     rescue Interrupt
       say exit_message if exit_message
-      exit 1
+      false
     rescue => e
       puts e.backtrace.reverse if ENV['DEBUG']
       say! "!txtred!#{e.class}: #{e.message}"
+      true
     # :nocov:
+    end
+
+    def welcome_messages
+      say header if header
+      runner.run if show_usage
     end
 
     def input_loop
@@ -42,7 +48,7 @@ module MisterBin
     end
 
     def execute(input)
-      if input == exit_command
+      if exit_commands.include? input
         say exit_message if exit_message
         false
       else
@@ -54,7 +60,7 @@ module MisterBin
     def execute_command(input)
       command = Shellwords.shellwords input
 
-      if command.first.start_with? system_character
+      if command.first&.start_with? system_character
         system input[1..-1]
       else
         runner.run command
@@ -63,6 +69,10 @@ module MisterBin
 
     def header
       @header ||= options[:header]
+    end
+
+    def show_usage
+      options[:show_usage]
     end
 
     def prompt
@@ -77,8 +87,8 @@ module MisterBin
       @exit_message ||= options[:exit_message]
     end
 
-    def exit_command
-      @exit_command ||= options[:exit_command] || 'exit'
+    def exit_commands
+      @exit_commands ||= options[:exit_commands] || ['exit', 'q']
     end
 
     def system_character
