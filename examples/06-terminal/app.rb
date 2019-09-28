@@ -21,6 +21,14 @@ terminal = MisterBin::Terminal.new runner, {
   header: "Welcome",
   autocomplete: %w[--help greet]
 }
+
+# optionally, define custom command overrides
+terminal.on '/cd' do |args|
+  Dir.chdir args[0] if args[0]
+  puts Dir.pwd
+end
+
+# start the terminal
 terminal.start
 
 
