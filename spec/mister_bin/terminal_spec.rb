@@ -61,6 +61,15 @@ describe Terminal do
         expect(subject).to receive(:system).with('ls -la')
         subject.start
       end
+
+      context "when system shell is disabled" do
+        let(:options) { { disable_system_shell: true } }
+
+        it "does not run the system command" do
+          expect(subject).not_to receive(:system).with('ls -la')
+          subject.start
+        end
+      end
     end
 
     context "with the exit command" do
@@ -69,6 +78,21 @@ describe Terminal do
 
       it "exits the terminal" do
         expect { subject.start }.to output_fixture 'terminal/exit'
+      end
+    end
+
+    context "with predefined reserved commands" do
+      let(:input) { ["/hello world of goo", false] }
+
+      before do
+        subject.on '/hello' do |args|
+          puts "/hello called"
+          p args
+        end
+      end
+
+      it "executes the block" do
+        expect { subject.start }.to output_fixture 'terminal/reserved'
       end
     end
 

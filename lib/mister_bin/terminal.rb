@@ -13,6 +13,10 @@ module MisterBin
       @options = options || {}
     end
 
+    def on(command, &block)
+      reserved_commands[command] = block
+    end
+
     def start
       Readline.completion_append_character = " "
       Readline.completion_proc = autocomplete_handler if autocomplete
@@ -23,29 +27,20 @@ module MisterBin
 
   private
 
-    def safe_input_loop
-      input_loop
-    # :nocov:
-    rescue Interrupt
-      say exit_message if exit_message
-      false
-    rescue => e
-      puts e.backtrace.reverse if ENV['DEBUG']
-      say "!txtred!#{e.class}"
-      say e.message
-      true
-    # :nocov:
+    def autocomplete
+      @autocomplete ||= options[:autocomplete]&.sort
     end
 
-    def welcome_messages
-      say header if header
-      runner.run if show_usage
-    end
-
-    def input_loop
-      while input = Readline.readline(prompt, true) do
-        break unless execute input
+    def autocomplete_handler
+      @autocomplete_handler ||= proc do |s|
+        # :nocov:
+        autocomplete.grep(/#{Regexp.escape(s)}/)
+        # :nocov:
       end
+    end
+
+    def disable_system_shell
+      options[:disable_system_shell]
     end
 
     def execute(input)
@@ -61,27 +56,13 @@ module MisterBin
     def execute_command(input)
       command = Shellwords.shellwords input
 
-      if command.first&.start_with? system_character
+      if reserved_commands.include? command.first
+        reserved_commands[command.first].call command[1..-1]
+      elsif !disable_system_shell and command.first&.start_with? system_character
         system input[1..-1]
       else
         runner.run command
       end
-    end
-
-    def header
-      @header ||= options[:header]
-    end
-
-    def show_usage
-      options[:show_usage]
-    end
-
-    def prompt
-      @prompt ||= options[:prompt] || "\n> "
-    end
-
-    def autocomplete
-      @autocomplete ||= options[:autocomplete]&.sort
     end
 
     def exit_message
@@ -92,16 +73,49 @@ module MisterBin
       @exit_commands ||= options[:exit_commands] || ['exit', 'q']
     end
 
+    def header
+      @header ||= options[:header]
+    end
+
+    def input_loop
+      while input = Readline.readline(prompt, true) do
+        break unless execute input
+      end
+    end
+
+    def prompt
+      @prompt ||= options[:prompt] || "\n> "
+    end
+
+    def reserved_commands
+      @reserved_commands ||= {}
+    end
+
+    def safe_input_loop
+      input_loop
+    # :nocov:
+    rescue Interrupt
+      say exit_message if exit_message
+      false
+    rescue => e
+      puts e.backtrace.reverse if ENV['DEBUG']
+      say "!txtred!#{e.class}"
+      say e.message
+      true
+    # :nocov:
+    end
+
+    def show_usage
+      options[:show_usage]
+    end
+
     def system_character
       @system_character ||= options[:system_character] || '/'
     end
 
-    def autocomplete_handler
-      @autocomplete_handler ||= proc do |s|
-        # :nocov:
-        autocomplete.grep(/#{Regexp.escape(s)}/)
-        # :nocov:
-      end
+    def welcome_messages
+      say header if header
+      runner.run if show_usage
     end
 
   end

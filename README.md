@@ -283,6 +283,19 @@ terminal = MisterBin::Terminal.new runner, {
 }
 ```
 
+In addition, you may wish to provide your own code blocks for handling some
+commands that are not handled by your runner. For example, this piece of code
+will capture the `/cd ...` command from the terminal and pass it to your 
+block:
+
+```
+terminal = MisterBin::Terminal.new runner
+terminal.on '/cd' do |args|
+  Dir.chdir args[0] if args[0]
+  puts Dir.pwd
+end
+```
+
 These are the available options. All string options are displayed with 
 the [Colsole][5] `say` command so they support color markers.
 
@@ -321,6 +334,10 @@ The prefix character that if typed at the beginning of a command, will avoid
 executing the runner, and instead execute a system (shell) command. 
 Default: `"/"`.
 
+#### `disable_system_shell`
+
+If true, commands that start with `/` will *not* be delegated to the stsrem.
+Default: `false`.
 
 
 In the Wild
