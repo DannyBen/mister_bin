@@ -195,7 +195,7 @@ These classes can use any of the below DSL commands, and must define a
 
 ### Command DSL
 
-The DSL is designed to create a [docopt][1] document. Most commands are 
+The DSL is designed to create a [docopt] document. Most commands are 
 optional.
 
 The below example outlines all available DSL commands.
@@ -297,7 +297,7 @@ end
 ```
 
 These are the available options. All string options are displayed with 
-the [Colsole][5] `say` command so they support color markers.
+the [Colsole] `say` command so they support color markers.
 
 #### `header`
 
@@ -346,18 +346,21 @@ In the Wild
 Several examples of real world use of Mister Bin in the wild (well, 
 "In the Back Yard" really...).
 
-- [AudioAddict][4] - Command line utility for the AudioAddict radio network
-- [Madman][3] - The Markdown Swiss Army Knife
-- [Kojo][2] - Command line utility for generating config files from templates 
-  and definition files
-- [Jobly][6] - Compact job server with API, CLI and Web UI
-- [Slacktail][7] - Command line utility for following your Slack chat from the terminal
+- [AudioAddict] - Command line utility for the AudioAddict radio network
+- [Bashly] - Bash command line framework and CLI Generator
+- [Jobly] - Compact job server with API, CLI and Web UI
+- [Kojo] - Command line utility for generating config files from templates and definition files
+- [Madman] - The Markdown Swiss Army Knife
+- [Slacktail] - Command line utility for following your Slack chat from the terminal
+- [Site Link Analyzer] - Command line utility for finding broken links in a site
 
 
-[1]: http://docopt.org/
-[2]: https://github.com/DannyBen/kojo
-[3]: https://github.com/DannyBen/madman
-[4]: https://github.com/DannyBen/audio_addict
-[5]: https://github.com/dannyben/colsole
-[6]: https://github.com/dannyben/jobly
-[7]: https://github.com/dannyben/slacktail
+[docopt]: http://docopt.org/
+[Kojo]: https://github.com/DannyBen/kojo
+[Madman]: https://github.com/DannyBen/madman
+[AudioAddict]: https://github.com/DannyBen/audio_addict
+[Colsole]: https://github.com/dannyben/colsole
+[Jobly]: https://github.com/dannyben/jobly
+[Slacktail]: https://github.com/dannyben/slacktail
+[Site Link Analyzer]: https://github.com/dannyben/sla
+[Bashly]: https://github.com/DannyBen/bashly
