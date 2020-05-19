@@ -73,7 +73,7 @@ describe CommandMeta do
       end
 
       it 'returns a string' do
-        expect(subject.docopt).to match_fixture('docopt/base')
+        expect(subject.docopt).to match_approval('docopt/base')
       end
     end
 
@@ -83,7 +83,7 @@ describe CommandMeta do
       end
 
       it 'does not show --version in help string' do
-        expect(subject.docopt).to match_fixture('docopt/minimal')
+        expect(subject.docopt).to match_approval('docopt/minimal')
       end
     end
   end

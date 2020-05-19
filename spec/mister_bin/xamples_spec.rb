@@ -18,7 +18,7 @@ describe 'examples' do
           say "!txtblu!$!txtrst! #{line}"
           clean_line = line.sub('./app.rb', 'app').gsub(/[^a-zA-Z0-9 ]/, '-')
           fixture_name = "examples/#{name}/#{clean_line}"
-          expect(`bundle exec #{line}`).to match_fixture fixture_name
+          expect(`bundle exec #{line}`).to match_approval fixture_name
         end
       end
     end

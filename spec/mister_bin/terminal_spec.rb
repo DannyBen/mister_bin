@@ -30,7 +30,7 @@ describe Terminal do
 
       expect(Readline).to receive(:completion_proc=)
 
-      expect { subject.start }.to output_fixture 'terminal/options'
+      expect { subject.start }.to output_approval 'terminal/options'
     end
     
   end
@@ -43,14 +43,14 @@ describe Terminal do
     end
 
     it "starts a terminal that runs commands on the runner" do
-      expect { subject.start }.to output_fixture 'terminal/help'
+      expect { subject.start }.to output_approval 'terminal/help'
     end
 
     context "with a valid command" do
       let(:input) { ["dir --all", false] }
 
       it "runs the command" do
-        expect { subject.start }.to output_fixture 'terminal/command'
+        expect { subject.start }.to output_approval 'terminal/command'
       end
     end
 
@@ -77,7 +77,7 @@ describe Terminal do
       let(:options) { { exit_message: 'Goodbye' } }
 
       it "exits the terminal" do
-        expect { subject.start }.to output_fixture 'terminal/exit'
+        expect { subject.start }.to output_approval 'terminal/exit'
       end
     end
 
@@ -92,7 +92,7 @@ describe Terminal do
       end
 
       it "executes the block" do
-        expect { subject.start }.to output_fixture 'terminal/reserved'
+        expect { subject.start }.to output_approval 'terminal/reserved'
       end
     end
 
