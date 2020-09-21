@@ -69,7 +69,7 @@ Creating a command line utility with Mister Bin involves at least two files:
 2. One or more subcommand files. These files use the DSL, and will usually be
    placed in your `lib/<your gem>/commands` folder.
 
-WHen executing the commands, you can use only the first letters of the 
+When executing the commands, you can use only the first letters of the 
 command name. Mister Bin will search for the command that starts with your 
 input, and if it finds one and one only, it will execute it. For example, 
 if you have a `server` command, you can execute it with `yourapp s` if it
@@ -244,7 +244,7 @@ example "app ls --all"
 
 Interactive Terminal
 --------------------------------------------------
-Mister Bin comes with an interactive terminal thaht allows you to set up a
+Mister Bin comes with an interactive terminal that allows you to set up a
 console that sends all commands to your runner.
 
 ![Demo](https://raw.githubusercontent.com/DannyBen/mister_bin/master/demo/terminal.gif)
