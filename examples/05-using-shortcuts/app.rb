@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'mister_bin'
 
-# commands/greet_command.rb
+# commands/server_command.rb
 class ServerCommand < MisterBin::Command
   usage "app server start"
   usage "app server stop"
@@ -11,7 +11,7 @@ class ServerCommand < MisterBin::Command
   end
 end
 
-# commands/shout_command.rb
+# commands/say_command.rb
 class SayCommand < MisterBin::Command
   usage "app say SOMETHING"
 
@@ -20,7 +20,7 @@ class SayCommand < MisterBin::Command
   end
 end
 
-# commands/shout_command.rb
+# commands/config_command.rb
 class ConfigCommand < MisterBin::Command
   usage "app config edit"
 
