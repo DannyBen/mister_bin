@@ -3,6 +3,8 @@ require_relative '../samples/dir_command'
 require_relative '../samples/global_command'
 
 describe Terminal do
+  subject(:terminal) { described_class.new runner, options }
+
   let(:runner) do
     runner = MisterBin::Runner.new
     runner.route 'dir', to: DirCommand
@@ -10,7 +12,6 @@ describe Terminal do
   end
 
   let(:options) { nil }
-  subject { described_class.new runner, options }
 
   describe 'terminal options' do
     let(:options) do
@@ -24,13 +25,13 @@ describe Terminal do
     end
 
     it 'applies the options to the terminal' do
-      expect(Readline).to receive(:readline)
+      allow(Readline).to receive(:readline)
         .with(options[:prompt], true)
         .and_return('quit')
 
       expect(Readline).to receive(:completion_proc=)
 
-      expect { subject.start }.to output_approval 'terminal/options'
+      expect { terminal.start }.to output_approval 'terminal/options'
     end
   end
 
@@ -38,18 +39,18 @@ describe Terminal do
     let(:input) { ['--help', false] }
 
     before do
-      expect(Readline).to receive(:readline).and_return(*input)
+      allow(Readline).to receive(:readline).and_return(*input)
     end
 
     it 'starts a terminal that runs commands on the runner' do
-      expect { subject.start }.to output_approval 'terminal/help'
+      expect { terminal.start }.to output_approval 'terminal/help'
     end
 
     context 'with a valid command' do
       let(:input) { ['dir --all', false] }
 
       it 'runs the command' do
-        expect { subject.start }.to output_approval 'terminal/command'
+        expect { terminal.start }.to output_approval 'terminal/command'
       end
     end
 
@@ -57,16 +58,16 @@ describe Terminal do
       let(:input) { ['/ls -la', false] }
 
       it 'runs the system command' do
-        expect(subject).to receive(:system).with('ls -la')
-        subject.start
+        expect(terminal).to receive(:system).with('ls -la')
+        terminal.start
       end
 
       context 'when system shell is disabled' do
         let(:options) { { disable_system_shell: true } }
 
         it 'does not run the system command' do
-          expect(subject).not_to receive(:system).with('ls -la')
-          subject.start
+          expect(terminal).not_to receive(:system).with('ls -la')
+          terminal.start
         end
       end
     end
@@ -76,7 +77,7 @@ describe Terminal do
       let(:options) { { exit_message: 'Goodbye' } }
 
       it 'exits the terminal' do
-        expect { subject.start }.to output_approval 'terminal/exit'
+        expect { terminal.start }.to output_approval 'terminal/exit'
       end
     end
 
@@ -84,14 +85,14 @@ describe Terminal do
       let(:input) { ['/hello world of goo', false] }
 
       before do
-        subject.on '/hello' do |args|
+        terminal.on '/hello' do |args|
           puts '/hello called'
           p args
         end
       end
 
       it 'executes the block' do
-        expect { subject.start }.to output_approval 'terminal/reserved'
+        expect { terminal.start }.to output_approval 'terminal/reserved'
       end
     end
   end
