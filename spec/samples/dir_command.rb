@@ -1,26 +1,26 @@
 require 'mister_bin'
 
 class DirCommand < MisterBin::Command
-  summary "Show list of files and more"
-  help    "A longer help can optionallly go here."
-  version "3.2.1"
+  summary 'Show list of files and more'
+  help    'A longer help can optionallly go here.'
+  version '3.2.1'
 
-  usage "app dir"
-  usage "app dir --all"
-  usage "app dir DIR"
+  usage 'app dir'
+  usage 'app dir --all'
+  usage 'app dir DIR'
 
-  option "--all", "Also show hidden files"
+  option '--all', 'Also show hidden files'
 
-  param "DIR", "Directory to list"
+  param 'DIR', 'Directory to list'
 
-  command "dir", "Command description"
+  command 'dir', 'Command description'
 
-  example "app dir"
-  example "app dir --all"
+  example 'app dir'
+  example 'app dir --all'
 
   environment 'SECRET', 'There is no spoon'
 
   def run
-    puts args['--all'] ? "success --all" : "success"
+    puts args['--all'] ? 'success --all' : 'success'
   end
 end

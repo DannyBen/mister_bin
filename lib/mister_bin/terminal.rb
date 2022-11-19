@@ -8,7 +8,7 @@ module MisterBin
 
     attr_reader :runner, :options
 
-    def initialize(runner, options=nil)
+    def initialize(runner, options = nil)
       @runner = runner
       @options = options || {}
     end
@@ -18,7 +18,7 @@ module MisterBin
     end
 
     def start
-      Readline.completion_append_character = " "
+      Readline.completion_append_character = ' '
       Readline.completion_proc = autocomplete_handler if autocomplete
 
       welcome_messages
@@ -57,9 +57,9 @@ module MisterBin
       command = Shellwords.shellwords input
 
       if reserved_commands.include? command.first
-        reserved_commands[command.first].call command[1..-1]
-      elsif !disable_system_shell and command.first&.start_with? system_character
-        system input[1..-1]
+        reserved_commands[command.first].call command[1..]
+      elsif !disable_system_shell && command.first&.start_with?(system_character)
+        system input[1..]
       else
         runner.run command
       end
@@ -70,7 +70,7 @@ module MisterBin
     end
 
     def exit_commands
-      @exit_commands ||= options[:exit_commands] || ['exit', 'q']
+      @exit_commands ||= options[:exit_commands] || %w[exit q]
     end
 
     def header
@@ -78,7 +78,7 @@ module MisterBin
     end
 
     def input_loop
-      while input = Readline.readline(prompt, true) do
+      while (input = Readline.readline prompt, true)
         break unless execute input
       end
     end
@@ -93,7 +93,7 @@ module MisterBin
 
     def safe_input_loop
       input_loop
-    # :nocov:
+      # :nocov:
     rescue Interrupt
       say exit_message if exit_message
       false
@@ -102,7 +102,7 @@ module MisterBin
       say "!txtred!#{e.class}"
       say e.message
       true
-    # :nocov:
+      # :nocov:
     end
 
     def show_usage
@@ -117,6 +117,5 @@ module MisterBin
       say header if header
       runner.run if show_usage
     end
-
   end
 end

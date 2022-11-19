@@ -6,7 +6,7 @@ module MisterBin
 
     attr_reader :header, :footer, :version, :commands, :handler
 
-    def initialize(opts={})
+    def initialize(opts = {})
       @header = opts[:header]
       @footer = opts[:footer]
       @version = opts[:version]
@@ -22,22 +22,22 @@ module MisterBin
       @handler = to
     end
 
-    def run(argv=[])
+    def run(argv = [])
       if handler
         handler.execute argv
       elsif argv.empty?
         show_subs
-      elsif argv == ['--help'] or argv == ['-h']
+      elsif (argv == ['--help']) || (argv == ['-h'])
         show_help
-      elsif version and (argv == ['--version'] or argv == ['-v'])
+      elsif version && ((argv == ['--version']) || (argv == ['-v']))
         puts version
-        return 1
+        1
       else
         execute argv
       end
     end
 
-    private
+  private
 
     def execute(argv)
       argv = normalize_argv_command argv
@@ -54,19 +54,20 @@ module MisterBin
     def normalize_argv_command(argv)
       command = argv[0]
       return argv if commands.has_key? command
-      candidates = commands.keys.select { |key| key =~ /^#{command}/ }
+
+      candidates = commands.keys.grep(/^#{command}/)
       argv[0] = candidates.first if candidates.count == 1
       argv
     end
 
     def show_subs
       if commands.empty?
-        say "No subcommands found"
+        say 'No subcommands found'
       else
         show_subs!
       end
 
-      return 1
+      1
     end
 
     def show_subs!
@@ -74,8 +75,8 @@ module MisterBin
       max_summary_size = terminal_width - longest_key - 6
 
       say "#{header}\n" if header
-      
-      say "Commands:"
+
+      say 'Commands:'
       commands.each do |key, command|
         summary = command.meta.description
         summary = summary[0..max_summary_size].strip
@@ -87,12 +88,12 @@ module MisterBin
 
     def show_help
       if commands.empty?
-        say "No subcommands found"
+        say 'No subcommands found'
       else
         show_help!
       end
 
-      return 1
+      1
     end
 
     def show_help!
@@ -100,17 +101,15 @@ module MisterBin
 
       commands.each do |key, command|
         meta = command.meta
-        next unless meta.help or meta.summary
+        next unless meta.help || meta.summary
 
         say "!txtgrn!#{key}"
         help = meta.help || meta.summary
         say word_wrap "  #{help}"
-        say ""
+        say ''
       end
 
-      say "#{footer}" if footer
+      say footer.to_s if footer
     end
-
-
   end
 end

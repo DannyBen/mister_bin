@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require "irb"
-require "irb/completion" 
-require "mister_bin"
+require 'irb'
+require 'irb/completion'
+require 'mister_bin'
 
 include MisterBin
 
