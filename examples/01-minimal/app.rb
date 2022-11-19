@@ -3,9 +3,9 @@ require 'mister_bin'
 
 # commands/greet_command.rb
 class GreetCommand < MisterBin::Command
-  summary "Say hi"
-  usage "app greet [NAME]"
-  param "NAME", "The recipient of the greeting"
+  summary 'Say hi'
+  usage 'app greet [NAME]'
+  param 'NAME', 'The recipient of the greeting'
 
   def run
     name = args['NAME'] || 'Luke'
@@ -14,7 +14,7 @@ class GreetCommand < MisterBin::Command
 end
 
 # bin/app
-runner = MisterBin::Runner.new 
+runner = MisterBin::Runner.new
 runner.route 'greet', to: GreetCommand
 runner.run ARGV
 
@@ -22,10 +22,10 @@ runner.run ARGV
 #
 # See available commands
 # $ ./app.rb
-# 
+#
 # See help for a given command
 # $ ./app.rb greet --help
-# 
+#
 # Execute a given command
 # $ ./app.rb greet
 # $ ./app.rb greet Bob

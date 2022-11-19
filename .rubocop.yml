@@ -1,0 +1,11 @@
+inherit_from: .rubocop_todo.yml
+
+# require: rubocop-rspec
+
+inherit_gem:
+  rentacop: rentacop.yml
+
+AllCops:
+  TargetRubyVersion: 2.6.0
+  Exclude:
+    - 'debug.rb'

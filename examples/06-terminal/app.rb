@@ -3,9 +3,9 @@ require 'mister_bin'
 
 # commands/greet_command.rb
 class GreetCommand < MisterBin::Command
-  summary "Say hi"
-  usage "app greet [NAME]"
-  param "NAME", "The recipient of the greeting"
+  summary 'Say hi'
+  usage 'app greet [NAME]'
+  param 'NAME', 'The recipient of the greeting'
 
   def run
     name = args['NAME'] || 'Luke'
@@ -14,12 +14,12 @@ class GreetCommand < MisterBin::Command
 end
 
 # bin/app
-runner = MisterBin::Runner.new 
+runner = MisterBin::Runner.new
 runner.route 'greet', to: GreetCommand
 
 terminal = MisterBin::Terminal.new runner, {
-  header: "Welcome",
-  autocomplete: %w[--help greet]
+  header:       'Welcome',
+  autocomplete: %w[--help greet],
 }
 
 # optionally, define custom command overrides
@@ -30,5 +30,3 @@ end
 
 # start the terminal
 terminal.start
-
-

@@ -12,13 +12,12 @@ module MisterBin
     end
 
     class << self
-      def execute(argv=[])
+      def execute(argv = [])
         args = Docopt.docopt docopt, version: meta.version, argv: argv
         instance = new args
         target = find_target_command instance, args
         exitcode = instance.send target
         exitcode.is_a?(Numeric) ? exitcode : 0
-
       rescue Docopt::Exit => e
         puts e.message
         1
@@ -82,11 +81,10 @@ module MisterBin
       def find_target_command(instance, args)
         target_commands.each do |target|
           method_name = :"#{target}_command"
-          return method_name if instance.respond_to? method_name and args[target.to_s]
+          return method_name if instance.respond_to?(method_name) && args[target.to_s]
         end
         :run
       end
-
     end
   end
 end

@@ -1,9 +1,8 @@
 require 'colsole'
 
 module MisterBin
-
   # This class is responsible for holding all the meta data for a command and
-  # for generating a text string ready to be used by Docopt. 
+  # for generating a text string ready to be used by Docopt.
   class CommandMeta
     include Colsole
 
@@ -23,8 +22,10 @@ module MisterBin
     end
 
     def docopt
-      [summary_string, help_string, usage_string, commands_string,
-        options_string, params_string, env_string, examples_string].compact.join "\n"
+      [
+        summary_string, help_string, usage_string, commands_string,
+        options_string, params_string, env_string, examples_string
+      ].compact.join "\n"
     end
 
     def description
@@ -38,60 +39,63 @@ module MisterBin
   private
 
     def summary_string
-      summary ? word_wrap(summary) + "\n" : nil
+      summary ? "#{word_wrap(summary)}\n" : nil
     end
 
     def help_string
-      help ? word_wrap(help) + "\n" : nil
+      help ? "#{word_wrap(help)}\n" : nil
     end
 
     def usage_string
-      result = ["Usage:"]
+      result = ['Usage:']
       usages.each { |text| result << word_wrap("  #{text}") }
-      result << ""
+      result << ''
       result.join "\n"
     end
 
     def options_string
-      result = ["Options:"]
+      result = ['Options:']
       options.each do |option|
         result << "  #{option[0]}"
         result << word_wrap("    #{option[1]}")
-        result << ""
+        result << ''
       end
 
-      result << "  -h --help"
+      result << '  -h --help'
       result << "    Show this help\n"
 
       if version
-        result << "  --version"
+        result << '  --version'
         result << "    Show version number\n"
       end
-      
+
       result.join "\n"
     end
 
     def params_string
       return nil if params.empty?
+
       key_value_block 'Parameters:', params
     end
 
     def env_string
       return nil if env_vars.empty?
+
       key_value_block 'Environment Variables:', env_vars
     end
 
     def commands_string
       return nil if commands.empty?
+
       key_value_block 'Commands:', commands
     end
 
     def examples_string
       return nil if examples.empty?
 
-      result = ["Examples:"]
+      result = ['Examples:']
       examples.each { |text| result << word_wrap("  #{text}") }
-      result << ""
+      result << ''
       result.join "\n"
     end
 
@@ -100,11 +104,10 @@ module MisterBin
       pairs.each do |key, value|
         result << "  #{key}"
         result << word_wrap("    #{value}")
-        result << ""
+        result << ''
       end
 
       result.join "\n"
     end
-
   end
 end

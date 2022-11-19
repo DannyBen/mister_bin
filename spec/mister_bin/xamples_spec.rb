@@ -1,18 +1,17 @@
 require 'spec_helper'
 
 describe 'examples' do
-  it "works" do
+  it 'works' do
     dirs = Dir['examples/*'].select { |f| File.directory? f }
     # dirs = Dir["examples/06*"]
 
     dirs.each do |example|
       name = File.basename example
-      result = nil
-      
+
       say "!txtgrn!#{name}"
 
       Dir.chdir example do
-        lines = File.readlines "app.rb"
+        lines = File.readlines 'app.rb'
         lines = lines.map { |line| line[/^# \$ (.*)/, 1] }.compact
         lines.each do |line|
           say "!txtblu!$!txtrst! #{line}"
@@ -22,5 +21,5 @@ describe 'examples' do
         end
       end
     end
-  end  
+  end
 end

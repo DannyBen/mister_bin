@@ -15,15 +15,15 @@ describe Terminal do
   describe 'terminal options' do
     let(:options) do
       {
-        header: "Hello bobbo",
-        autocomplete: %w[search list],
-        prompt: ">>>",
-        exit_message: 'See you',
-        exit_commands: ['quit', 'exit', 'bye']
+        header:        'Hello bobbo',
+        autocomplete:  %w[search list],
+        prompt:        '>>>',
+        exit_message:  'See you',
+        exit_commands: %w[quit exit bye],
       }
     end
 
-    it "applies the options to the terminal" do
+    it 'applies the options to the terminal' do
       expect(Readline).to receive(:readline)
         .with(options[:prompt], true)
         .and_return('quit')
@@ -32,69 +32,67 @@ describe Terminal do
 
       expect { subject.start }.to output_approval 'terminal/options'
     end
-    
   end
 
   describe 'in-terminal command handling' do
-    let(:input) { ["--help", false] }
-    
+    let(:input) { ['--help', false] }
+
     before do
       expect(Readline).to receive(:readline).and_return(*input)
     end
 
-    it "starts a terminal that runs commands on the runner" do
+    it 'starts a terminal that runs commands on the runner' do
       expect { subject.start }.to output_approval 'terminal/help'
     end
 
-    context "with a valid command" do
-      let(:input) { ["dir --all", false] }
+    context 'with a valid command' do
+      let(:input) { ['dir --all', false] }
 
-      it "runs the command" do
+      it 'runs the command' do
         expect { subject.start }.to output_approval 'terminal/command'
       end
     end
 
-    context "when the command starts with the system character" do
-      let(:input) { ["/ls -la", false] }
+    context 'when the command starts with the system character' do
+      let(:input) { ['/ls -la', false] }
 
-      it "runs the system command" do
+      it 'runs the system command' do
         expect(subject).to receive(:system).with('ls -la')
         subject.start
       end
 
-      context "when system shell is disabled" do
+      context 'when system shell is disabled' do
         let(:options) { { disable_system_shell: true } }
 
-        it "does not run the system command" do
+        it 'does not run the system command' do
           expect(subject).not_to receive(:system).with('ls -la')
           subject.start
         end
       end
     end
 
-    context "with the exit command" do
-      let(:input) { ["exit"] }
+    context 'with the exit command' do
+      let(:input) { ['exit'] }
       let(:options) { { exit_message: 'Goodbye' } }
 
-      it "exits the terminal" do
+      it 'exits the terminal' do
         expect { subject.start }.to output_approval 'terminal/exit'
       end
     end
 
-    context "with predefined reserved commands" do
-      let(:input) { ["/hello world of goo", false] }
+    context 'with predefined reserved commands' do
+      let(:input) { ['/hello world of goo', false] }
 
       before do
         subject.on '/hello' do |args|
-          puts "/hello called"
+          puts '/hello called'
           p args
         end
       end
 
-      it "executes the block" do
+      it 'executes the block' do
         expect { subject.start }.to output_approval 'terminal/reserved'
       end
     end
-
   end
 end

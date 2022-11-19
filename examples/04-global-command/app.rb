@@ -3,8 +3,8 @@ require 'mister_bin'
 
 # commands/global_command.rb
 class GlobalCommand < MisterBin::Command
-  usage "app say [MESSAGE]"
-  usage "app shout [MESSAGE]"
+  usage 'app say [MESSAGE]'
+  usage 'app shout [MESSAGE]'
 
   def run
     message = args['MESSAGE'] || 'hello'
@@ -21,15 +21,14 @@ end
 runner = MisterBin::Runner.new handler: GlobalCommand
 runner.run ARGV
 
-
 # Usage Examples:
 #
 # See available commands
 # $ ./app.rb
-# 
+#
 # See help
 # $ ./app.rb --help
-# 
+#
 # Execute a given command
 # $ ./app.rb say hello
 # $ ./app.rb shout
