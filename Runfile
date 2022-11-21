@@ -1,6 +1,7 @@
 require "runfile-tasks"
 require "byebug"
 require_relative 'lib/mister_bin'
+require_relative 'lib/mister_bin/version'
 
 include MisterBin
 
