@@ -1,4 +1,6 @@
-require: rubocop-rspec
+require:
+  - rubocop-rspec
+  - rubocop-performance
 
 inherit_gem:
   rentacop: rentacop.yml
@@ -10,9 +12,11 @@ AllCops:
 
 # === RSpec
 
-# Allow using `describe` with anything
+# Allow using `describe` with any string in some cases
 RSpec/DescribeClass:
-  Enabled: false
+  Exclude:
+    - spec/mister_bin/integration_spec.rb
+    - spec/mister_bin/xamples_spec.rb
 
 # The examples spec is special, it is allowed to be longer
 RSpec/ExampleLength:
