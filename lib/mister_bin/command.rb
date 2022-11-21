@@ -5,7 +5,7 @@ module MisterBin
   class Command
     include Colsole
 
-    attr_accessor :args
+    attr_reader :args
 
     def execute(argv = [])
       @args = Docopt.docopt self.class.docopt, version: self.class.meta.version, argv: argv
