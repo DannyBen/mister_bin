@@ -5,22 +5,21 @@ module MisterBin
   class Command
     include Colsole
 
-    attr_reader :args
+    attr_accessor :args
 
-    def initialize(args = nil)
-      @args = args
+    def execute(argv = [])
+      @args = Docopt.docopt self.class.docopt, version: self.class.meta.version, argv: argv
+      target = self.class.find_target_command self, args
+      exitcode = send target
+      exitcode.is_a?(Numeric) ? exitcode : 0
+    rescue Docopt::Exit => e
+      puts e.message
+      1
     end
 
     class << self
       def execute(argv = [])
-        args = Docopt.docopt docopt, version: meta.version, argv: argv
-        instance = new args
-        target = find_target_command instance, args
-        exitcode = instance.send target
-        exitcode.is_a?(Numeric) ? exitcode : 0
-      rescue Docopt::Exit => e
-        puts e.message
-        1
+        new.execute argv
       end
 
       # DSL
@@ -66,13 +65,9 @@ module MisterBin
         @meta ||= CommandMeta.new
       end
 
-    protected
-
       def docopt
         meta.docopt
       end
-
-    private
 
       def target_commands
         @target_commands ||= []
