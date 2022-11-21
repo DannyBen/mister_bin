@@ -28,10 +28,11 @@ action :toc do
   exec 'gh-md-toc README.md > toc.txt'
 end
 
-help   "Generate changelog"
+help   "Generate changelog and append old changelog"
 action :changelog do
-  system 'github_changelog_generator'
-  system "git commit -am 'update changelog' && git push"
+  system "git changelog --save"
+  # append older changelog (prior to switching to git-changelog)
+  system "cat .changelog.old.md >> CHANGELOG.md"
 end
 
 require_relative 'debug' if File.exist? 'debug.rb'
