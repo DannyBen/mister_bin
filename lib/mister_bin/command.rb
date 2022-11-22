@@ -7,6 +7,10 @@ module MisterBin
 
     attr_reader :args
 
+    def initialize(args = nil)
+      @args = args
+    end
+
     def execute(argv = [])
       @args = Docopt.docopt self.class.docopt, version: self.class.meta.version, argv: argv
       target = self.class.find_target_command self, args
