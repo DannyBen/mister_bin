@@ -46,7 +46,7 @@ module MisterBin
       if command
         command.execute argv
       else
-        say "!txtred!Unknown command\n"
+        say "r`Unknown command`\n"
         show_subs
       end
     end
@@ -80,7 +80,7 @@ module MisterBin
       commands.each do |key, command|
         summary = command.meta.description
         summary = summary[0..max_summary_size].strip
-        say "  !bldgrn!#{key.ljust longest_key}  !txtrst!#{summary}"
+        say "  gb`#{key.ljust longest_key}  `#{summary}"
       end
 
       say "\n#{footer}" if footer
@@ -103,7 +103,7 @@ module MisterBin
         meta = command.meta
         next unless meta.help || meta.summary
 
-        say "!txtgrn!#{key}"
+        say "g`#{key}`"
         help = meta.help || meta.summary
         say word_wrap "  #{help}"
         say ''

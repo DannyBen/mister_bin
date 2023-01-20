@@ -39,7 +39,7 @@ end
 
 # bin/app
 runner = MisterBin::Runner.new version: '1.2.3', header: 'Sample command',
-  footer: 'For additional info, run !txtgrn!app --help!txtrst! or !txtgrn!app COMMAND --help!txtrst!'
+  footer: 'For additional info, run g`app --help` or g`app COMMAND --help`'
 
 runner.route 'greet', to: GreetCommand
 runner.route 'dir',   to: DirCommand
