@@ -1,9 +1,9 @@
-[0;31mUnknown command
+[31mUnknown command[0m
 
-[0mThis is a sample header.
+This is a sample header.
 
 Commands:
-  [1;32mdir  [0mShow list of files and more
+  [1m[32mdir  [0mShow list of files and more
 
 This is a sample footer.
 Use --help for each command to get more information

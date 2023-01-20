@@ -1,7 +1,7 @@
 Sample command
 
 Commands:
-  [1;32mgreet  [0mSay hi
-  [1;32mdir    [0mShow list of files
+  [1m[32mgreet  [0mSay hi
+  [1m[32mdir    [0mShow list of files
 
-For additional info, run [0;32mapp --help[0m or [0;32mapp COMMAND --help[0m
+For additional info, run [32mapp --help[0m or [32mapp COMMAND --help[0m

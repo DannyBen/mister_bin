@@ -1,6 +1,6 @@
-[0;31mUnknown command
+[31mUnknown command[0m
 
-[0mCommands:
-  [1;32mserver  [0m
-  [1;32msay     [0m
-  [1;32mconfig  [0m
+Commands:
+  [1m[32mserver  [0m
+  [1m[32msay     [0m
+  [1m[32mconfig  [0m
