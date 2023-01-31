@@ -12,7 +12,7 @@ describe 'examples' do
 
       Dir.chdir example do
         lines = File.readlines 'app.rb'
-        lines = lines.map { |line| line[/^# \$ (.*)/, 1] }.compact
+        lines = lines.filter_map { |line| line[/^# \$ (.*)/, 1] }
         lines.each do |line|
           say "b`$` #{line}"
           clean_line = line.sub('./app.rb', 'app').gsub(/[^a-zA-Z0-9 ]/, '-')
