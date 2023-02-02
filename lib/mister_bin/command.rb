@@ -1,4 +1,4 @@
-require 'docopt'
+require 'docopt_ng'
 require 'colsole'
 
 module MisterBin
@@ -12,11 +12,11 @@ module MisterBin
     end
 
     def execute(argv = [])
-      @args = Docopt.docopt self.class.docopt, version: self.class.meta.version, argv: argv
+      @args = DocoptNG.docopt self.class.docopt, version: self.class.meta.version, argv: argv
       target = self.class.find_target_command self, args
       exitcode = send target
       exitcode.is_a?(Numeric) ? exitcode : 0
-    rescue Docopt::Exit => e
+    rescue DocoptNG::Exit => e
       puts e.message
       1
     end
