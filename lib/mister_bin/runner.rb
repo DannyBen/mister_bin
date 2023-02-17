@@ -30,8 +30,7 @@ module MisterBin
       elsif (argv == ['--help']) || (argv == ['-h'])
         show_help
       elsif version && ((argv == ['--version']) || (argv == ['-v']))
-        puts version
-        1
+        show_version
       else
         execute argv
       end
@@ -58,6 +57,11 @@ module MisterBin
       candidates = commands.keys.grep(/^#{command}/)
       argv[0] = candidates.first if candidates.count == 1
       argv
+    end
+
+    def show_version
+      puts version
+      0
     end
 
     def show_subs
@@ -89,11 +93,11 @@ module MisterBin
     def show_help
       if commands.empty?
         say 'No subcommands found'
+        1
       else
         show_help!
+        0
       end
-
-      1
     end
 
     def show_help!
