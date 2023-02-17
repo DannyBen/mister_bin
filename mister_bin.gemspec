@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.7'
 
   s.add_runtime_dependency 'colsole', '>= 0.8.1', '< 2'
-  s.add_runtime_dependency 'docopt_ng', '~> 0.7'
+  s.add_runtime_dependency 'docopt_ng', '~> 0.7', '>= 0.7.1'
 
   s.metadata['rubygems_mfa_required'] = 'true'
 end

@@ -18,7 +18,7 @@ module MisterBin
       exitcode.is_a?(Numeric) ? exitcode : 0
     rescue DocoptNG::Exit => e
       puts e.message
-      1
+      e.exit_code
     end
 
     class << self
