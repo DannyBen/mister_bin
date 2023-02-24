@@ -1,5 +1,4 @@
-Mister Bin
-==================================================
+# Mister Bin
 
 [![Gem Version](https://badge.fury.io/rb/mister_bin.svg)](https://badge.fury.io/rb/mister_bin)
 [![Build Status](https://github.com/DannyBen/mister_bin/workflows/Test/badge.svg)](https://github.com/DannyBen/mister_bin/actions?query=workflow%3ATest)
@@ -12,34 +11,11 @@ interfaces for your gem or other Ruby application.
 
 ---
 
-Contents
---------------------------------------------------
-
-* [Installation](#installation)
-* [Feature Highlights](#feature-highlights)
-* [Examples](#examples)
-* [Usage](#usage)
-* [Creating the Main Executable](#creating-the-main-executable)
-   * [Runner Options](#runner-options)
-   * [Runner Routes](#runner-routes)
-* [Creating Commands](#creating-commands)
-   * [Command DSL](#command-dsl)
-* [Interactive Terminal](#interactive-terminal)
-   * [Terminal features](#terminal-features)
-   * [Terminal options](#terminal-options)
-* [In the Wild](#in-the-wild)
-
-
-
-Installation
---------------------------------------------------
+## Installation
 
     $ gem install mister_bin
 
-
-
-Feature Highlights
---------------------------------------------------
+## Feature Highlights
 
 - Easy to use and minimalistic DSL for describing your command line actions.
 - Each command is defined with a separate class for maximum testability and 
@@ -47,10 +23,7 @@ Feature Highlights
 - Commands can have subcommands.
 - Designed for gem developers.
 
-
-
-Examples
---------------------------------------------------
+## Examples
 
 This screencast shows the command line output of several Ruby gems that were
 created with Mister Bin:
@@ -60,10 +33,7 @@ created with Mister Bin:
 - See the [examples](/examples) folder for several example use cases.
 - For real world examples, see the [In the Wild](#in-the-wild) section.
 
-
-
-Usage
---------------------------------------------------
+## Usage
 
 Creating a command line utility with Mister Bin involves at least two files:
 
@@ -78,10 +48,7 @@ input, and if it finds one and one only, it will execute it. For example,
 if you have a `server` command, you can execute it with `yourapp s` if it
 is the only command that starts with an `s`.
 
-
-
-Creating the Main Executable
---------------------------------------------------
+## Creating the Main Executable
 
 The main executable is usually simple and only serves to initialize Mister 
 Bin with options.
@@ -169,10 +136,7 @@ runner = MisterBin::Runner.new
 runner.route_all to: GlobalCommand
 ```
 
-
-
-Creating Commands
---------------------------------------------------
+## Creating Commands
 
 Create command classes by inheriting from `MisterBin::Command`, for example:
 
@@ -243,10 +207,8 @@ example "app ls"
 example "app ls --all"
 ```
 
+## Interactive Terminal
 
-
-Interactive Terminal
---------------------------------------------------
 Mister Bin comes with an interactive terminal that allows you to set up a
 console that sends all commands to your runner.
 
@@ -343,8 +305,7 @@ If true, commands that start with `/` will *not* be delegated to the stsrem.
 Default: `false`.
 
 
-In the Wild
---------------------------------------------------
+## In the Wild
 
 Several examples of real world use of Mister Bin in the wild (well, 
 "In the Back Yard" really...).
@@ -354,16 +315,18 @@ Several examples of real world use of Mister Bin in the wild (well,
 - [Jobly] - Compact job server with API, CLI and Web UI
 - [Kojo] - Command line utility for generating config files from templates and definition files
 - [Madman] - The Markdown Swiss Army Knife
+- [Madness] - Instant Markdown Server
 - [Slacktail] - Command line utility for following your Slack chat from the terminal
 - [Site Link Analyzer] - Command line utility for finding broken links in a site
 
 
+[AudioAddict]: https://github.com/DannyBen/audio_addict
+[Bashly]: https://github.com/DannyBen/bashly
+[Colsole]: https://github.com/dannyben/colsole
 [docopt]: http://docopt.org/
+[Jobly]: https://github.com/dannyben/jobly
 [Kojo]: https://github.com/DannyBen/kojo
 [Madman]: https://github.com/DannyBen/madman
-[AudioAddict]: https://github.com/DannyBen/audio_addict
-[Colsole]: https://github.com/dannyben/colsole
-[Jobly]: https://github.com/dannyben/jobly
-[Slacktail]: https://github.com/dannyben/slacktail
+[Madness]: https://github.com/DannyBen/madness
 [Site Link Analyzer]: https://github.com/dannyben/sla
-[Bashly]: https://github.com/DannyBen/bashly
+[Slacktail]: https://github.com/dannyben/slacktail
