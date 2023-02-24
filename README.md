@@ -13,7 +13,9 @@ interfaces for your gem or other Ruby application.
 
 ## Installation
 
-    $ gem install mister_bin
+```
+$ gem install mister_bin
+```
 
 ## Feature Highlights
 
