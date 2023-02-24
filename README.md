@@ -52,7 +52,10 @@ Feature Highlights
 Examples
 --------------------------------------------------
 
-![Demo](https://raw.githubusercontent.com/DannyBen/mister_bin/master/demo/demo.gif)
+This screencast shows the command line output of several Ruby gems that were
+created with Mister Bin:
+
+![Demo](support/demo/cast.gif)
 
 - See the [examples](/examples) folder for several example use cases.
 - For real world examples, see the [In the Wild](#in-the-wild) section.
@@ -247,7 +250,7 @@ Interactive Terminal
 Mister Bin comes with an interactive terminal that allows you to set up a
 console that sends all commands to your runner.
 
-![Demo](https://raw.githubusercontent.com/DannyBen/mister_bin/master/demo/terminal.gif)
+![Demo](support/demo/terminal.gif)
 
 See the [terminal example](/examples/06-terminal) folder.
 
