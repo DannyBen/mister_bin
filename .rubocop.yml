@@ -8,9 +8,7 @@ inherit_gem:
     - rspec.yml
 
 AllCops:
-  TargetRubyVersion: 2.7
-  Exclude:
-    - 'debug.rb'
+  TargetRubyVersion: 3.0
 
 # The examples spec is special, it is allowed to be longer
 RSpec/ExampleLength:
