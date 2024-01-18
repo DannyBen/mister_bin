@@ -243,7 +243,7 @@ terminal.start
 The `MisterBin::Terminal.new` command accepts an optional second argument. If 
 provided, it should be a options hash:
 
-```
+```ruby
 terminal = MisterBin::Terminal.new runner, {
   header: "Welcome",
   autocomplete: %w[--help greet]
@@ -255,7 +255,7 @@ commands that are not handled by your runner. For example, this piece of code
 will capture the `/cd ...` command from the terminal and pass it to your 
 block:
 
-```
+```ruby
 terminal = MisterBin::Terminal.new runner
 terminal.on '/cd' do |args|
   Dir.chdir args[0] if args[0]
