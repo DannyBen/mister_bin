@@ -1,4 +1,4 @@
-require "byebug"
+require "debug"
 require 'mister_bin/version'
 
 title   "Mister Bin Developer Toolbelt"
