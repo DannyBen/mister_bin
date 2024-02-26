@@ -7,11 +7,3 @@ version MisterBin::VERSION
 
 import_gem 'runfile-tasks/gem', gemname: 'mister_bin'
 import 'debug'
-
-help   "Generate changelog and append old changelog"
-action :changelog do
-  system "git changelog --save"
-  # append older changelog (prior to switching to git-changelog)
-  system "cat support/.changelog.old.md >> CHANGELOG.md"
-end
-
