@@ -151,7 +151,7 @@ class GreetCommand < MisterBin::Command
   param "NAME", "The recipient of the greeting"
 
   def run
-    # args hash is available everywhere in the calss
+    # args hash is available everywhere in the class
     name = args['NAME'] || 'Luke'
     puts "#{name}... I am your father..."
   end

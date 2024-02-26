@@ -4,6 +4,6 @@ Sample command
   Say hi
 
 [32mdir[0m
-  A longer help can optionallly go here.
+  A longer help can optionally go here.
 
 For additional info, run [32mapp --help[0m or [32mapp COMMAND --help[0m

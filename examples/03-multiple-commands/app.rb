@@ -16,7 +16,7 @@ end
 # commands/dir_command.rb
 class DirCommand < MisterBin::Command
   summary 'Show list of files'
-  help    'A longer help can optionallly go here.'
+  help    'A longer help can optionally go here.'
   version '3.2.1'
 
   usage 'app dir'

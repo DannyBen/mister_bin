@@ -2,7 +2,7 @@ require 'mister_bin'
 
 class DirCommand < MisterBin::Command
   summary 'Show list of files and more'
-  help    'A longer help can optionallly go here.'
+  help    'A longer help can optionally go here.'
   version '3.2.1'
 
   usage 'app dir'
