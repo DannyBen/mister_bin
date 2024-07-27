@@ -1,4 +1,3 @@
-require 'spec_helper'
 require_relative '../samples/dir_command'
 require_relative '../samples/global_command'
 
@@ -67,7 +66,7 @@ describe Terminal do
 
         it 'does not run the system command' do
           expect(terminal).not_to receive(:system).with('ls -la')
-          terminal.start
+          expect { terminal.start }.to output_approval 'terminal/no-system-command'
         end
       end
     end

@@ -9,13 +9,4 @@ inherit_gem:
 
 AllCops:
   TargetRubyVersion: 3.0
-
-# The examples spec is special, it is allowed to be longer
-RSpec/ExampleLength:
-  Exclude:
-    - 'spec/mister_bin/xamples_spec.rb'
-
-# The examples spec is special, it is allowed to use `it 'works'`
-RSpec/ExampleWording:
-  Exclude:
-    - 'spec/mister_bin/xamples_spec.rb'
+  SuggestExtensions: false

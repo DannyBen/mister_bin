@@ -1,4 +1,3 @@
-require 'spec_helper'
 require_relative '../samples/dir_command'
 require_relative '../samples/global_command'
 
