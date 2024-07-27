@@ -17,5 +17,10 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'colsole', '>= 0.8.1', '< 2'
   s.add_runtime_dependency 'docopt_ng', '~> 0.7', '>= 0.7.1'
 
-  s.metadata['rubygems_mfa_required'] = 'true'
+  s.metadata = {
+    'bug_tracker_uri'       => 'https://github.com/DannyBen/mister_bin/issues',
+    'changelog_uri'         => 'https://github.com/DannyBen/mister_bin/blob/master/CHANGELOG.md',
+    'source_code_uri'       => 'https://github.com/DannyBen/mister_bin',
+    'rubygems_mfa_required' => 'true',
+  }
 end

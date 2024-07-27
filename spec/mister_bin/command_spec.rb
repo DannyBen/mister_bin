@@ -1,4 +1,3 @@
-require 'spec_helper'
 require_relative '../samples/dir_command'
 
 describe Command do

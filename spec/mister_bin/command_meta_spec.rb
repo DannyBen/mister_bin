@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe CommandMeta do
   subject(:meta) { described_class.new }
 
