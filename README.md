@@ -127,7 +127,7 @@ runner.route 'config', to: ConfigCommand
 
 The first argument to the `route` method can be an array. In this case, the
 first element of the array will be considered the primary command name, and the
-other elements will be considered an alias.
+other elements will be considered aliases.
 
 ```ruby
 runner = MisterBin::Runner.new
