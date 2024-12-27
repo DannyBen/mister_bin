@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.required_ruby_version = '>= 3.0'
 
-  s.add_runtime_dependency 'colsole', '>= 0.8.1', '< 2'
-  s.add_runtime_dependency 'docopt_ng', '~> 0.7', '>= 0.7.1'
+  s.add_dependency 'colsole', '>= 0.8.1', '< 2'
+  s.add_dependency 'docopt_ng', '~> 0.7', '>= 0.7.1'
 
   s.metadata = {
     'bug_tracker_uri'       => 'https://github.com/DannyBen/mister_bin/issues',

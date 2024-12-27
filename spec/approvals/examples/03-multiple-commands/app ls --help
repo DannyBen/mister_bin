@@ -1,0 +1,30 @@
+Show list of files
+
+A longer help can optionally go here.
+
+Usage:
+  app dir
+  app dir --all
+  app dir DIR
+
+Options:
+  --all
+    Also show hidden files
+
+  -h --help
+    Show this help
+
+  --version
+    Show version number
+
+Parameters:
+  DIR
+    Directory to list
+
+Environment Variables:
+  SECRET
+    There is no spoon
+
+Examples:
+  app dir
+  app dir --all

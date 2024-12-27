@@ -3,5 +3,8 @@ This is a sample header.
 [32mdir[0m
   A longer help can optionally go here.
 
+[32mpush[0m
+  Push all to production
+
 This is a sample footer.
 Use --help for each command to get more information

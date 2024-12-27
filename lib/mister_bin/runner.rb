@@ -1,4 +1,5 @@
 require 'colsole'
+require 'debug'
 
 module MisterBin
   class Runner
@@ -15,7 +16,13 @@ module MisterBin
     end
 
     def route(key, to:)
-      commands[key] = to
+      if key.is_a? Array
+        target = key.shift
+        commands[target] = to
+        key.each { |alias_name| aliases[alias_name] = target }
+      else
+        commands[key] = to
+      end
     end
 
     def route_all(to:)
@@ -36,6 +43,10 @@ module MisterBin
       end
     end
 
+    def aliases
+      @aliases ||= {}
+    end
+
   private
 
     def execute(argv)
@@ -54,9 +65,18 @@ module MisterBin
       command = argv[0]
       return argv if commands.has_key? command
 
-      candidates = commands.keys.grep(/^#{command}/)
-      argv[0] = candidates.first if candidates.count == 1
+      argv[0] = find_target_command argv[0]
       argv
+    end
+
+    def find_target_command(input)
+      candidates = commands.keys.grep(/^#{input}/)
+      return candidates.first if candidates.count == 1
+
+      candidates = aliases.keys.grep(/^#{input}/)
+      return aliases[candidates.first] if candidates.count == 1
+
+      input
     end
 
     def show_version
