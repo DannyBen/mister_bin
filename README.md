@@ -23,7 +23,8 @@ $ gem install mister_bin
 - Each command is defined with a separate class for maximum testability and 
   scalability.
 - Commands can have subcommands.
-- Designed for gem developers.
+- Commands can have aliases.
+- Designed primarily for gem developers.
 
 ## Examples
 
@@ -122,6 +123,15 @@ runner = MisterBin::Runner.new
 runner.route 'dir', to: DirCommand
 runner.route 'greet', to: GreetCommand
 runner.route 'config', to: ConfigCommand
+```
+
+The first argument to the `route` method can be an array. In this case, the
+first element of the array will be considered the primary command name, and the
+other elements will be considered an alias.
+
+```ruby
+runner = MisterBin::Runner.new
+runner.route %w[dir ls list], to: DirCommand
 ```
 
 If you wish to route all commands to the same class, you can use:
