@@ -1,36 +1,43 @@
-Change Log
+Changelog
 ========================================
 
-Untagged - Latest
+v0.8.0 - 2024-12-27
 ----------------------------------------
 
-- Drop support for Ruby 2.x
+- Drop support for Ruby 2.x [`2fe891f`](https://github.com/DannyBen/mister_bin/commit/2fe891f)
+- Load files with autoload [`8aa0d0e`](https://github.com/DannyBen/mister_bin/commit/8aa0d0e)
+- Add support for command aliases [`9740b9a`](https://github.com/DannyBen/mister_bin/commit/9740b9a)
+- Compare [`v0.7.6..v0.8.0`](https://github.com/dannyben/mister_bin/compare/v0.7.6..v0.8.0)
 
 
 v0.7.6 - 2023-02-24
 ----------------------------------------
 
-- Update exit codes
+- Update exit codes [`8620a2f`](https://github.com/DannyBen/mister_bin/commit/8620a2f)
+- Compare [`v0.7.5..v0.7.6`](https://github.com/dannyben/mister_bin/compare/v0.7.5..v0.7.6)
 
 
 v0.7.5 - 2023-02-10
 ----------------------------------------
 
-- Drop support for Ruby 2.6
-- Switch to DocoptNG
+- Drop support for Ruby 2.6 [`b61456d`](https://github.com/DannyBen/mister_bin/commit/b61456d)
+- Switch to DocoptNG [`419159a`](https://github.com/DannyBen/mister_bin/commit/419159a)
+- Compare [`v0.7.4..v0.7.5`](https://github.com/dannyben/mister_bin/compare/v0.7.4..v0.7.5)
 
 
 v0.7.3 - 2022-11-22
 ----------------------------------------
 
-- Fix Command#initialize to receive args
+- Fix Command#initialize to receive args [`b88d3f4`](https://github.com/DannyBen/mister_bin/commit/b88d3f4)
+- Compare [`v0.7.2..v0.7.3`](https://github.com/dannyben/mister_bin/compare/v0.7.2..v0.7.3)
 
 
 v0.7.2 - 2022-11-21
 ----------------------------------------
 
-- Drop support for Ruby < 2.6
-- Add Command#execute to allow for improved testability
+- Drop support for Ruby < 2.6 [`f4ffba0`](https://github.com/DannyBen/mister_bin/commit/f4ffba0)
+- Add Command#execute to allow for improved testability [`dd1a4e3`](https://github.com/DannyBen/mister_bin/commit/dd1a4e3)
+- Compare [`v0.7.1..v0.7.2`](https://github.com/dannyben/mister_bin/compare/v0.7.1..v0.7.2)
 
 
 <!-- break v0.6.2 -->
