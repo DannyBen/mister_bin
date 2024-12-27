@@ -1,7 +1,8 @@
 This is a sample header.
 
 Commands:
-  [1m[32mdir  [0mShow list of files and more
+  [1m[32mdir   [0mShow list of files and more
+  [1m[32mpush  [0mPush all to production
 
 This is a sample footer.
 Use --help for each command to get more information

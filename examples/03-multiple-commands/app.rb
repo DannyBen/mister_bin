@@ -41,8 +41,9 @@ end
 runner = MisterBin::Runner.new version: '1.2.3', header: 'Sample command',
   footer: 'For additional info, run g`app --help` or g`app COMMAND --help`'
 
-runner.route 'greet', to: GreetCommand
-runner.route 'dir',   to: DirCommand
+runner.route 'greet',    to: GreetCommand
+# `dir` is the main command, `ls` and any subsequent array element are aliases
+runner.route %w[dir ls], to: DirCommand
 runner.run ARGV
 
 # Usage Examples:
@@ -61,6 +62,7 @@ runner.run ARGV
 # See help for each command
 # $ ./app.rb greet --help
 # $ ./app.rb dir --help
+# $ ./app.rb ls --help
 #
 # Execute a given command
 # $ ./app.rb greet

@@ -1,5 +1,6 @@
 require_relative '../samples/dir_command'
 require_relative '../samples/global_command'
+require_relative '../samples/push_command'
 
 describe Runner do
   exit_code = nil
@@ -22,6 +23,15 @@ describe Runner do
       runner.route 'cmd', to: 'ClassConstant'
       expect(runner.commands['cmd']).to eq 'ClassConstant'
     end
+
+    context 'with an array' do
+      it 'adds the first array element as a command and the rest as aliases' do
+        runner.route %w[dir ls list], to: 'ClassConstant'
+        expect(runner.commands['dir']).to eq 'ClassConstant'
+        expect(runner.aliases['ls']).to eq 'dir'
+        expect(runner.aliases['list']).to eq 'dir'
+      end
+    end
   end
 
   describe '#route_all' do
@@ -38,6 +48,7 @@ describe Runner do
         footer: "This is a sample footer.\nUse --help for each command to get more information"
 
       runner.route 'dir', to: DirCommand
+      runner.route %w[push upload deploy], to: PushCommand
       runner
     end
 
@@ -79,6 +90,26 @@ describe Runner do
     context 'with subcommand' do
       it 'executes the subcommand' do
         expect { exit_code = runner.run ['dir'] }.to output_approval('runner/dir')
+        expect(exit_code).to eq 0
+      end
+    end
+
+    context 'with an aliased command' do
+      it 'executes the original command' do
+        expect { exit_code = runner.run ['push'] }.to output_approval('runner/push')
+        expect(exit_code).to eq 0
+      end
+
+      it 'executes the target command' do
+        expect { exit_code = runner.run ['upload'] }.to output_approval('runner/push')
+        expect(exit_code).to eq 0
+
+        expect { exit_code = runner.run ['deploy'] }.to output_approval('runner/push')
+        expect(exit_code).to eq 0
+      end
+
+      it 'accepts partial matches' do
+        expect { exit_code = runner.run ['up'] }.to output_approval('runner/push')
         expect(exit_code).to eq 0
       end
     end
