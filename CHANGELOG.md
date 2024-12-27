@@ -1,6 +1,13 @@
 Changelog
 ========================================
 
+v0.8.1 - 2024-12-27
+----------------------------------------
+
+- Remove `require debug` [`5d96bdd`](https://github.com/DannyBen/mister_bin/commit/5d96bdd)
+- Compare [`v0.8.0..v0.8.1`](https://github.com/dannyben/mister_bin/compare/v0.8.0..v0.8.1)
+
+
 v0.8.0 - 2024-12-27
 ----------------------------------------
 
