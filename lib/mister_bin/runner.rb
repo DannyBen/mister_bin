@@ -1,5 +1,4 @@
 require 'colsole'
-require 'debug'
 
 module MisterBin
   class Runner
