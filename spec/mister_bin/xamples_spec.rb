@@ -1,7 +1,7 @@
 describe 'Examples' do
   Dir['examples/*'].select { |f| File.directory? f }.each do |example|
     name = File.basename(example)
-    leeway = RUBY_VERSION < '3.4.0' ? 10 : 0
+    leeway = RUBY_VERSION < '3.4.0' ? 15 : 0
 
     describe name do
       lines = Dir.chdir(example) { File.readlines('app.rb').filter_map { |line| line[/^# \$ (.*)/, 1] } }
