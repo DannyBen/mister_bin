@@ -1,2 +1,2 @@
 Fallback. A command that has no direct handler was called.
-{"ls"=>false, "--all"=>false, "new"=>false, "NAME"=>"Luke", "--force"=>false, "delete"=>true}
+{"ls" => false, "--all" => false, "new" => false, "NAME" => "Luke", "--force" => false, "delete" => true}
