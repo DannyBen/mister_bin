@@ -12,10 +12,10 @@ Gem::Specification.new do |s|
   s.files       = Dir['README.md', 'lib/**/*.*']
   s.homepage    = 'https://github.com/dannyben/mister_bin'
   s.license     = 'MIT'
-  s.required_ruby_version = '>= 3.1'
+  s.required_ruby_version = '>= 3.2'
 
-  s.add_dependency 'colsole', '>= 0.8.1', '< 2'
-  s.add_dependency 'docopt_ng', '~> 0.7', '>= 0.7.1'
+  s.add_dependency 'colsole', '~> 1.0.0'
+  s.add_dependency 'docopt_ng', '~> 0.7.1'
 
   s.metadata = {
     'bug_tracker_uri'       => 'https://github.com/DannyBen/mister_bin/issues',
