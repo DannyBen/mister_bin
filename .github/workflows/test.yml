@@ -10,11 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      matrix:
-        ruby: ['3.2', '3.3', '3.4', 'head']
-        include:
-        - ruby: head
-          allow_failure: true
+      matrix: { ruby: ['3.2', '3.3', '3.4', '4.0'] }
     
     continue-on-error: ${{ matrix.allow_failure == true }}
 
