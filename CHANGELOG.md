@@ -1,6 +1,16 @@
 Changelog
 ========================================
 
+v0.9.0 - 2026-01-06
+----------------------------------------
+
+- Drop support for Ruby 3.0 [`9777a15`](https://github.com/DannyBen/mister_bin/commit/9777a15)
+- Drop support for Ruby 3.1 [`7bf66d8`](https://github.com/DannyBen/mister_bin/commit/7bf66d8)
+- Fix Ruby 4 support [`c4b1c11`](https://github.com/DannyBen/mister_bin/commit/c4b1c11)
+- Switch from `readline` to `reline` [`4c216e2`](https://github.com/DannyBen/mister_bin/commit/4c216e2)
+- Compare [`v0.8.1..v0.9.0`](https://github.com/dannyben/mister_bin/compare/v0.8.1..v0.9.0)
+
+
 v0.8.1 - 2024-12-27
 ----------------------------------------
 
