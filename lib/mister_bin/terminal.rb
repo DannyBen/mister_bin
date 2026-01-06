@@ -1,4 +1,4 @@
-require 'readline'
+require 'reline'
 require 'colsole'
 require 'shellwords'
 
@@ -18,8 +18,8 @@ module MisterBin
     end
 
     def start
-      Readline.completion_append_character = ' '
-      Readline.completion_proc = autocomplete_handler if autocomplete
+      Reline.completion_append_character = ' '
+      Reline.completion_proc = autocomplete_handler if autocomplete
 
       welcome_messages
       loop { break unless safe_input_loop }
@@ -78,7 +78,7 @@ module MisterBin
     end
 
     def input_loop
-      while (input = Readline.readline prompt, true)
+      while (input = Reline.readline prompt, true)
         break unless execute input
       end
     end
