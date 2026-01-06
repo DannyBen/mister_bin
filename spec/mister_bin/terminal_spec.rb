@@ -24,11 +24,11 @@ describe Terminal do
     end
 
     it 'applies the options to the terminal' do
-      allow(Readline).to receive(:readline)
+      allow(Reline).to receive(:readline)
         .with(options[:prompt], true)
         .and_return('quit')
 
-      expect(Readline).to receive(:completion_proc=)
+      expect(Reline).to receive(:completion_proc=)
 
       expect { terminal.start }.to output_approval 'terminal/options'
     end
@@ -38,7 +38,7 @@ describe Terminal do
     let(:input) { ['--help', false] }
 
     before do
-      allow(Readline).to receive(:readline).and_return(*input)
+      allow(Reline).to receive(:readline).and_return(*input)
     end
 
     it 'starts a terminal that runs commands on the runner' do
