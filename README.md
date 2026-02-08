@@ -1,6 +1,6 @@
 # Mister Bin
 
-![repocard](repocard.svg)
+![repocard](https://repocard.dannyben.com/svg/mister_bin.svg)
 
 Mister Bin lets you develop rich, scalable and testable command line 
 interfaces for your gem or other Ruby application.
